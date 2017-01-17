@@ -2,7 +2,7 @@
 ---
 ##**Syntax**
 
-<span style="color: blue; font-size:18px"> **1. Child: >** </span>
+<span style="color: blue; font-size:18px"> **1. Child: >** <span>
 ```
 nav>ul>li
 	<nav>
@@ -12,7 +12,7 @@ nav>ul>li
 	</nav>
 ```  
 
-<span style="color: blue; font-size:18px"> **2. Sibling: +** </span>
+<span style="color: blue; font-size:18px"> **2. Sibling: +** <span>
 ```
 div+p+bq
 	<div></div>
@@ -20,7 +20,7 @@ div+p+bq
 	<blockquote></blockquote>
 ```  
 
-<span style="color: blue; font-size:18px"> **3. Climb-up: ^** </span>
+<span style="color: blue; font-size:18px"> **3. Climb-up: ^** <span>
 ```
 div+div>p>span+em^bq
 <div></div>
@@ -37,7 +37,7 @@ div+div>p>span+em^^bq
 <blockquote></blockquote>
 ```  
 
-<span style="color: blue; font-size:18px"> **4. Item numbering: $** </span>
+<span style="color: blue; font-size:18px"> **4. Item numbering: $** <span>
 ```
 ul>li.item$*5
 <ul>
@@ -80,7 +80,7 @@ ul>li.item$@3*5
     <li class="item7"></li>
 </ul>
 ```
-<span style="color: blue; font-size:18px"> **5. Grouping: ()** </span>
+<span style="color: blue; font-size:18px"> **5. Grouping: ()** <span>
 ```
 div>(header>ul>li*2>a)+footer>p
 <div>
@@ -111,7 +111,7 @@ div>(header>ul>li*2>a)+footer>p
 </footer>
 ```  
 
-<span style="color: blue; font-size:18px"> **6. Multiplication:*** </span>
+<span style="color: blue; font-size:18px"> **6. Multiplication:*** <span>
 ```
 ul>li*5
 <ul>
@@ -123,7 +123,7 @@ ul>li*5
 </ul>
 ```  
 
-<span style="color: blue; font-size:18px"> **7. ID and Class attributes** </span>
+<span style="color: blue; font-size:18px"> **7. ID and Class attributes** <span>
 
 1.**#header**
 ```
@@ -142,7 +142,7 @@ ul>li*5
 <p class="class1 class2 class3"></p>
 ```  
 
-<span style="color: blue; font-size:18px"> **8. Custom attributes** </span>
+<span style="color: blue; font-size:18px"> **8. Custom attributes** <span>
 ```
 1. p[title="Hello world"]
 	<p title="Hello world"></p>
@@ -152,7 +152,7 @@ ul>li*5
 	<div a="value1" b="value2"></div>
 ```  
 
-<span style="color: blue; font-size:18px"> **9. Text: {}**</span>
+<span style="color: blue; font-size:18px"> **9. Text: {}**<span>
 ```
 1. a{Click me}
 	<a href="">Click me</a>
@@ -160,7 +160,7 @@ ul>li*5
 	<p>Click <a href="">here</a> to continue</p>
 ```  
 
-<span style="color: blue; font-size:18px"> **10. Implicit tag names**</span>
+<span style="color: blue; font-size:18px"> **10. Implicit tag names**<span>
 ```
 1. .class
 	<div class="class"></div>
