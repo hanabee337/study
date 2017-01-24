@@ -81,7 +81,7 @@ Media Access Control Address.
 제작시 하드웨어에 직접 부착되어서 나오는 번호이기 때문에 동일한 MAC Address를 가진 다른 장비는 없다.
 
 #OSI 7 Layer
-![](imgs/20170124-134356.png)
+![](imgs/osi.jpg)
 TCP/IP는 Transport layer와 network layer에 해당된다.
 
 #암호화
