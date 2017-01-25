@@ -87,7 +87,7 @@ cd python
 작업 폴더로 이동 후,
 $ pyenv local fc-python 입력.
 ```
-![ ](imgs/pyenv.png  "pyenv 설정")
+![ ](imgs/pyenv.png  "pyenv 설정")  
 상기 command 입력하고 난 후, 
 $ pyenv versions 확인해 보면 하기 그림과 같은 결과가 나옴.  
 ```
