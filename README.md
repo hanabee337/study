@@ -15,7 +15,7 @@
 	01/17
 		07_git.md
 	01/18
-		
+		08_computer_structure.md	
 	01/19
 		09_os_db.md
 	01/20
