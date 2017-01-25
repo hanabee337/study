@@ -73,7 +73,7 @@ Secured Socket Layer
 
 ###Domain Address
 네트워크상 컴퓨터를 식별하는 호스트 이름.
-사람이 알아볼 수 있는 주소이기 때문에 컴퓨터는 알아볼 수 없다.
+사람이 알아볼 수 있는 주소이기 때문에 컴퓨터는 알아볼 수 없다.  
 따라서, 변환 장치가 필요하다.
 
 ### DNS
@@ -82,7 +82,7 @@ Secured Socket Layer
 
 ### MAC Address
 Media Access Control Address. 
-네트워크 어댑터에 부착된 식별자.
+네트워크 어댑터에 부착된 식별자.  
 제작시 하드웨어에 직접 부착되어서 나오는 번호이기 때문에  
 동일한 MAC Address를 가진 다른 장비는 없다.
 
