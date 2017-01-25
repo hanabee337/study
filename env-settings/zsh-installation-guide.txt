@@ -1,0 +1,62 @@
+##########################
+# zsh installation guide #
+##########################
+#
+# 1. Install zsh
+# sudo apt-get install zsh
+#
+# 2. bash shell에서 zsh로 shell 변경
+# cat /etc/shells하면 zsh가 정상적으로 설치가 되었다면
+# /usr/bin/zsh가 보일 것임.
+#
+# which zsh # 쉘의 위치를 확인한다
+# /usr/bin/zsh가 보일 것임.
+#
+# chsh -> change shell이란 명령어
+# chsh란 명령어를 통해 기본 shell을 변경한다.
+# chsh -s /usr/bin/zsh
+#
+# 암호 입력하란 prompt가 보일 텐데, default로 Enter 키를 눌러도 되고, 
+# 새로 설정해도 됨.
+# Ubuntu logout을 한 후에, 다시 login을 해보면 변경이 적용되어 있을 것임.
+#
+# 3. 확인 방법
+# echo $SHELL을 입력하면 /usr/bin/zsh로 출력되면 성공.
+# which zsh # 쉘의 위치를 확인한다
+#
+################################
+# oh-my-zsh installation guide #
+################################
+#
+# 1. Install oh-my-zsh
+#	1) sudo apt-get install curl
+#	2) curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+#	3) Ubuntu logout후, 다시 login
+#
+#	or Refer to "https://github.com/robbyrussell/oh-my-zsh"
+#
+# 2. THEME 설정
+#   ~/.zshrc 파일에서 
+#   ZSH_THEME ="robbyrussell"을(default) 원하는 theme으로 설정 변경하면 됨.
+#   ZSH_THEME ="agnoster"로 변경
+# 
+# 3.특수문자가 깨지지 않게 하기 위해 powerline/fonts가 필요
+#   powerline 전체를 install하지 않아도 됨
+#   git clone https://github.com/powerline/fonts.git
+#   cd fonts로 이동
+#   ./install.sh -> powerline fonts install한다.
+#
+# 4. 지정한 Agnoster theme이 망가져있는 경우, 폰트 문제로 폰트를 변경해준다.
+# 	terminal이 최대화로 활성화된 상태에서, 상단 바의 '편집->기본 편집->프로파일' 로
+# 	이동하여 '새로 만들기'에서 'Ubuntu Mono deriavative Powerline'을 선택 및 설정.
+#	Refer to http://seungdols.tistory.com/567, http://storycompiler.tistory.com/58
+#
+####################
+#	Pyenv Setting
+####################
+# 1. .bashrc에 pyenv 관련 설정 내용들을 .zshrc 파일에도 동일하게 적용해준다.
+#	
+#		export PYENV_ROOT="$HOME/.pyenv" 
+#		export PATH="$PYENV_ROOT/bin:$PATH"
+#		eval "$(pyenv init -)"
+

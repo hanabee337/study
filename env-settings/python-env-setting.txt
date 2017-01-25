@@ -1,0 +1,98 @@
+
+#############################
+Start of pyenv Install
+#############################
+#############################
+pyenv git clone
+#############################
+pyenv 레포를 .pyenv에 복사
+$ git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+
+#############################
+pyenv Installer
+#############################
+$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+
+#################################
+bashrc or bash_profile에 환경설정 
+#################################
+vi ~/.bashrc or ~/.bash_profile
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+or
+
+$ echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+$ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+$ echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+
+#################################
+pyenv operation 
+#################################
+$ pyenv version
+$ pyenv install 3.5.2
+$ pyenv shell 3.5.2 
+-> python 설치 했는데 버전이 3.5.2가 아닌 경우, 3.5.2 버전으로 update하란 뜻
+$ python --version
+#############################
+End of pyenv Install
+#############################
+
+
+#################################
+.vimrc setting 
+#################################
+autoindecnt, highlight, tapstop, shiftwidth ....
+
+#################################
+Start of Install Vundle + NERDTree 
+#################################
+#################################
+# Vundle 설치
+#################################
+1. Setup Vundle
+$ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+2. Configure Plugins in ~/.vimrc
+# refer to ~/.vimrc
+
+3.Install Plugins
+$ vim +PluginInstall +qall
+
+#################################
+# NERDTree 설치
+#################################
+1. Search Plugins
+vim 실행 후, :PlugSearch NERD
+
+2. Add Plugin to ~/.vimrc
+$ echo "Plugin 'The-NERD-Tree'" >> ~/.vimrc
+
+3.Install Plugin
+:PluginInstall
+
+4. 
+vim 실행 후, :NERDTreeToggle
+#################################
+End of Install Vundle + NERDTree 
+#################################
+
+
+#################################
+Install tree 
+#################################
+1. $ sudo apt-get install tree
+2. $ tree 폴더명
+
+################# 터미널에서 ###################
+$ python
+>>> 
+: python shell로 변환이 되어서 작업할 수 있다.
+###############################################
+
+###########################################################################
+$ python --version으로 확인해보고, 3.5.2가 아니라면
+$ pyenv shell 3.5.2 
+-> python 설치 했는데 버전이 3.5.2가 아닌 경우, 3.5.2 버전으로 update하란 뜻
+############################################################################

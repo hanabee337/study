@@ -1,0 +1,57 @@
+								###################################
+								# solarized palette setting guide #
+								###################################
+
+								http://storycompiler.tistory.com/58
+				https://github.com/Anthony25/gnome-terminal-colors-solarized#uninstall
+
+	gnome-terminal, vim 각각 컬러 설정을 해줘야 함.
+   	vim의 컬러설정을 위해서는 반드시 gnome-terminal도 해주어야 함.
+   	왜냐하면, .vimrc 파일에서 터미널에 설정된 팔레트 값을 참조하는 부분이 있기 때문.
+
+
+	<<	gnome-terminal용 solarized 설치	>>
+	
+1. "http://storycompiler.tistory.com/58"에 있는 gnome-terminal-colors-solarized-master.zip
+	패키지를 다운받아 압축해제함.
+	$ unzip gnome-terminal-colors-solarized-master.zip
+
+2. 압축해제된 디렉토리로 가서 
+	$ ./install.sh 실행함
+
+2. solarized 설정과 관련된 세가지 질문이 나옵니다.
+	첫번째는 dark / dark_alternative / light 파레트 중 무엇을 선택하겠느냐는 질문입니다.
+	두번째에는 파레트를 적용할 터미널 프로파일을 선택해야합니다.
+	그러면 바로 새로 실행한 터미널에 새로운 컬러파레트가 적용된 것을 보실 수 있습니다.
+
+
+	<<	vim용 solarized 설치정	>>
+
+1.	$ git clone git://github.com/altercation/solarized.git
+
+2. 하기 명령을 수행하면 vim에 대한 팔레트 설정이 완료됨.
+	$ cd vim-colors-solarized/colors
+	$ mkdir -p ~/.vim/colors
+	$ mv solarized.vim ~/.vim/colors
+
+3. .vimrc 설정 변경
+	syntax enable
+	set background=dark
+	colorscheme solarized 
+	
+	
+	<<	dircolors solarized 설치	>>
+	
+1. 	2015. 6. 15 기준으로 최신 패키지를 아래에 첨부합니다.
+	dircolors-solarized-master.zip
+	패키지를 받아 unzip으로 압축을 풀어주세요.
+
+2. 	우분투 14.04 이후 버전에서는 그저 아래 명령어만 수행하면 됩니다.
+	$ cp dircolors-solarized-master/dircolors.256dark ~/.dircolors
+	
+	위처럼 복사를 하신 후,
+	$ vi ~/.profile에 한 줄을 추가해주세요.
+		eval `dircolors ~/.dircolors`
+	$ vi ~/.zshrc
+		eval `dircolors ~/.dircolors`
+

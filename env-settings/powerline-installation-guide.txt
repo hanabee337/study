@@ -1,0 +1,60 @@
+								################################
+								# Powerline Installation guide #
+								################################
+					
+			http://seungdols.tistory.com/567
+			https://humb1ec0ding.github.io/2013/11/26/ubuntu-powerline-beautify-the-stateline/
+
+1.	기본 tool 설치 : python-pip & git
+	python 3.2+, pip with setuptools
+	$ sudo apt-get install python-pip
+
+2. powerline plugin installation(system-wide)
+	$ sudo pip install git+git://github.com/Lokatog/powerline
+
+3. 설치 후, 정상 설치 확인
+	$ which powerline 라고 확인했을 때,
+	/usr/local/bin/powerline 라고 나오면 정상.
+
+4.	Fonts Installation - Fontconfig
+	Download the latest version of the symbol font and fontconfig file:
+	$ wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+	$ wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+
+	# Move the symbol font to a valid X font path.
+	$ sudo mv PowerlineSymbols.otf /usr/share/fonts/	
+	# Update font cache for the path the font was moved to.
+	$ sudo fc-cache -vf 	
+	# Install the fontconfig file.
+	$ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+
+5. Bash config
+	Add the following line to your ~/.bashrc or /etc/bash.bashrc:
+
+	if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
+    	source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
+	fi
+
+6. Vim config
+	Add following to /etc/vim/vimrc:
+
+	set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+
+	" Always show statusline
+	set laststatus=2
+
+	" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+	set t_Co=256
+
+7. zsh config
+	Add the following line to your ~/.zshrc :
+
+	if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
+    	source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
+	fi
+
+8. Tmux config
+	vi ~/.tmux.conf를 열자(없으면 생성하면 그만이다)
+	$ source /usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf
+	$ set-option -g default-terminal "screen-256color"
+
