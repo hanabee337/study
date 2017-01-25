@@ -98,6 +98,7 @@ str(147) : integer를 str으로 형변환 시킴.
 ### 문자열 나누기(split)
 - 문자열의 내장함수 split을 사용.  
 **split** 함수에 인자로 주어진 구분자를 기준으로 하나의 문자열을 **리스트 형태**로 반환해준다.  
+
 ###문자열 결함(join)
 split와 반대 기능.  
 
@@ -180,7 +181,8 @@ append : 리스트 인덱스 한 곳에 전부 삽입(리스트 항목 추가).
 
 ## Tuple
 - 리스트와 달리, 변경/삭제가 불가.  
-- tuple <-> list 상호 변환 가능  
+- tuple <-> list 상호 변환 가능.  
+
 -생성 방법
 ```
 empty_tuple = ()
@@ -192,7 +194,8 @@ set은 중복된 값이 존재할 수 없다.
 형 변환시, 문자열, list, tuple, dict을 set으로 변환시킬 수 있으며,  
 중복된 값이 사라짐.  
 dict의 경우는 key 만 남음.  
-```
+```  
+
 ![ ](imgs/dict-set.png  "dict set")  
 
 ### Dictionary
@@ -218,7 +221,7 @@ empty_dict2 = dict()
 - .values() : 모든 value 값   
 - .items() : 모든 key-value 얻기(tuple로 변환)  
 - .copy() : 복사  
-![ ](/home/hanabee2/git/github/hanabee337/imgs/dict-key-value.png  "dict key-value")  
+![ ](imgs/dict-key-value.png  "dict key-value")  
 
 #### Dictionary 실습
 1. 6가지 색상의 영어 키, 한글 값을 갖는 딕셔너리(colors)를 생성한다. (red, green, blue, yellow, black, white)
@@ -232,9 +235,11 @@ empty_dict2 = dict()
 		- Key: Doran Ring, Value: 400
 		- Key: Doran Blade, Value: 450
 7. `x = {1,2,3,4,5,6,8}`, `y={4,5,6,9,10,11}`, `z={4,6,8,9,7,10,12}`일 때,
-	- x,y,z의 교집합에 해당하는 숫자는?
-	- y,z의 교집합이며 x에는 속하지 않는 숫자는?
-	- x에만 속하고 y,z에는 속하지 않는 숫자는?
+	- x,y,z의 교집합에 해당하는 숫자는?  
+	- y,z의 교집합이며 x에는 속하지 않는 숫자는?  
+	- x에만 속하고 y,z에는 속하지 않는 숫자는?  
+  
+ 
 ![ ](imgs/dict-set-op.png  "practice")  
 
 ![ ](imgs/dict-practice.png  "실습")
