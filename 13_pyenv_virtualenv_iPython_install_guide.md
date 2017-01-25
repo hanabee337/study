@@ -14,25 +14,26 @@ virtualenv는 파이썬 개발환경을 프로젝트별로 분리해서 관리�
 위의 pyenv 제작자가, pyenv를 사용할 경우, 쉽게 virtualenv를 사용할 수 있도록 만든 라이브러리.  
 
 ###pyenv 설치
--	Ubuntu
+- Ubuntu  
 <https://github.com/yyuu/pyenv-installer>
->	curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash  
-
+```
+$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash  
+```
 ###vim 설치
 ```
-sudo apt-get install vim  
+$ sudo apt-get install vim  
 ```
 
 ### z-shell 변경
-```
 <http://theyearlyprophet.com/love-your-terminal.html>
->	bash와 비슷하게 동작하는 셸로, 사용성이 좋다고 함.  
+```
+bash와 비슷하게 동작하는 셸로, 사용성이 좋다고 함.  
 ```
 - Ubuntu 환경에서 다음과 같이 설치한다.
 ```
-sudo apt-get install zsh
-curl -L http://install.ohmyz.sh | sh
-chsh -s `which zsh`
+$ sudo apt-get install zsh
+$ curl -L http://install.ohmyz.sh | sh
+$ chsh -s `which zsh`
 ```
 ### pyenv 설정
 - 설치 후 pyenv관련 설정을 rc 파일에서 추가.   
