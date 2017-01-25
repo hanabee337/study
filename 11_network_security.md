@@ -23,10 +23,13 @@ TCP/IP를 통해 정보를 주고받는 컴퓨터 네트워크
 World Wide Web : 문서들이 있는 정보의 저장소
 
 ### URL
-Uniform Resourse Locator
-인터넷에 접속할 때, 네트워크 상에서 해당 자원이 어디 있는지를 알려주는 문자열.  
-접속하려면 해당 URL에 맞는 프로토콜을 알아야 하고, 그와 동일한 프로토콜로 접속해야 한다.  
+Uniform Resourse Locator  
+
+인터넷에 접속할 때, 네트워크 상에서 해당 자원이 어디 있는지를 알려주는 문자열.   
+접속하려면 해당 URL에 맞는 프로토콜을 알아야 하고, 그와 동일한 프로토콜로 접속해야 한다.    
+```
 [Protocol]://[Host]/[port]/[path]  
+```
 
 ### Protocol
 통신규약, 통신할 뗴 정해진 메세지 규약.
@@ -35,9 +38,10 @@ Uniform Resourse Locator
 1.GET
 >	보낼 수 있는 정보의 양이 정해져 있다.(caching된 데이터를 가져올 수 있다)  
 
-2.PUT
-3.POST
-4.DELETE
+2.PUT  
+3.POST  
+4.DELETE  
+
 ### FTP
 
 ### TELNET
@@ -48,7 +52,7 @@ Simple Mail Transfer Protocol
 전자메일 전송 프로토콜
 
 ### SSH
-Secure Shell
+Secure Shell  
 네트워크상의 다른 컴퓨터에 로그인하거나 원격시스템에서 명령을 실행하고 다른 시스템으로 파일을 복사하는 응용프로그램, 프로토콜  
 
 ###SSL
