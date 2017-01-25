@@ -87,7 +87,7 @@ cd python
 작업 폴더로 이동 후,
 $ pyenv local fc-python 입력.
 ```
-![ ](/home/hanabee2/git/day13/imgs/pyenv.png  "pyenv 설정")
+![ ](imgs/pyenv.png  "pyenv 설정")
 상기 command 입력하고 난 후, 
 $ pyenv versions 확인해 보면 하기 그림과 같은 결과가 나옴.  
 ```
@@ -102,17 +102,17 @@ $ pyenv global 3.4.3
 $ python --version으로 결과 확인해 보면,
 ```
 >Python 3.4.3으로 변경되어 있는 것을 확인할 수 있다.  
-![ ](/home/hanabee2/git/day13/imgs/pyenv-virtualenv-ipython-installation-guide.png  "pyenv-virtualenv installation guide")
+![ ](imgs/pyenv-virtualenv-ipython-installation-guide.png  "pyenv-virtualenv installation guide")
 
 ### iPython
 기존 파이썬 shell보다 다양한 기능을 사용할 수 있도록 해주는 shell 제공.  
 $ pip list
 현재 설치된 list들을 보여줌.
-![ ](/home/hanabee2/git/day13/imgs/pip-installation.png  "pip installation guide")
+![ ](imgs/pip-installation.png  "pip installation guide")
 ```
 $ pip install ipython  
 커맨드 라인에서 ipython 실행  
 ```
-![ ](/home/hanabee2/git/day13/imgs/ipython-installtion.png  "ipython install guide")
+![ ](imgs/ipython-installtion.png  "ipython install guide")
 
 
