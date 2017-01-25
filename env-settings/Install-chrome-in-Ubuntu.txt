@@ -1,0 +1,17 @@
+2017.1.9
+
+
+- Install chrome in Ubuntu
+
+# 1.
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+// 만약 위의 명령을 실행했는데 문제가 생기면 아래와 같이 진행하면 됨. 
+sudo apt-get -f install
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+
+#2.
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt-get install libxss1 libgconf2-4 libappindicator1 libindicator7
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+

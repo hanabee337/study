@@ -1,0 +1,10 @@
+- Atom 에서 install해야 하는 packages
+설치법 : 1. 설정 진입
+            Ctrl+
+	2. Install 탭 선택
+	3. 검색, Install 버튼 선택
+
+1. emmet 
+   : HTML/CSS 코딩 생산성을 향상시켜주는 plug-in 도구
+2. less-than-slash
+   : 자동으로 HTML태그를 닫아주는 기능

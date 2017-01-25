@@ -1,0 +1,47 @@
+- sublime text3 Installation guide
+
+#1.
+Sublime Text3를 여기(https://www.sublimetext.com/3)에서 다운로드 받아 설치한다.
+sudo dpkg -i sublime-text_build-3126_amd64.deb
+
+#2.
+ubuntu 터미널에서 설치할 때에는 다음과 같이 한다.
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+sudo apt-get update
+sudo apt-get install sublime-text-installer
+
+reference : http://hochulshin.com/sublime-text3/
+
+
+
+- Package Control 설치
+Package control을 다음 순서대로 설치한다.
+
+여기에서 Sublime text3용 script를 복사한다.
+Sublime Text3를 실행한다.
+Control + ` 키를 눌러서(View->Show Console) console창을 연 후 위에서 복사한 script를 붙여넣기하여 스크립트를 실행한다.
+Sublime Text3를 재실행한다.
+
+- Trouble Shooting
+If you face a ssl-related error while installing Package control, do the following on terminal.
+
+unzip -l ~/.config/sublime-text-3/Installed\ Packages/0_package_control_loader.sublime-package
+
+After unzip the package, relaunch the Sublime Text3
+
+- Install new packages and configuration
+AdvancedNewFile : Control + Alt + N으로 생성
+BracketHighlighter
+SideBarEnhancement
+SublimeLinter
+SublimeCodeIntel
+Theme - soda
+etc
+
+
+- 기본 설정
+refer to : http://jos39.tistory.com/243
+
+
+
+
