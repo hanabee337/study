@@ -44,7 +44,13 @@ https://github.com/fastcampus-school/computer_basic_assignment_171q_web/tree/mas
 #git 실습
 ### remote repository 만들고 local push하기
 1. git remote add origin https://github.com/hanabee337/second_git.git
-2. git push -u origin master
+2. git push -u origin master  
+
+github에서 new repo를 만들고 나면  
+![ ](imgs/github-create-new-repo.png  "create  new repo in github ")  
+
+local에선 하기와 같은 command line으로 new repo 설정한다.  
+![ ](imgs/create-new-repo-on-cmd-line.png  "local push")  
 
 ### gitignore
 .gitignore 쓸 필요가 없거나 git에서 관리될 필요 없는 파일들을 여기에 명시해준다. 
