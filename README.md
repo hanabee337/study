@@ -27,5 +27,9 @@
 	01/25
 		13_pyenv_virtualenv_iPython_install_guide.md
 		13_python-var-num-string-list-tuple-dict-set.md
-		
+	01/26
+		14-ubunti-terminator.md
+		14-cindition-funct.md
+		14-html-css-homework-review.md
+			
 #2. 수업 내용 관련 자료 모으는 중...
