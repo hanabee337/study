@@ -1,7 +1,6 @@
 #Ubuntu Terminator
-```
-$ sudo apt-get install terminator
-```
+```$ sudo apt-get install terminator```
+
 ####단축키
 1. Ctrl-Shift-E: 수직분할  
 2. Ctrl-Shift-O: 수평분할  

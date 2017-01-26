@@ -93,8 +93,8 @@ SyntaxError: invalid syntax
 
 In [47]: [item for item in range(1,6) if(item%2==0)]
 Out[47]: [2, 4]
-
 ```
+
 2. Set Comprehension
 ```
 In [4]: g= (item for item in range(10))
@@ -122,11 +122,9 @@ In [7]: for i in (g):
 7
 8
 9
-
 ```
+
 3. Generator Comprehension
-
-
 
 ####실습
 
@@ -139,9 +137,8 @@ In [8]: for i in range(0,7,1):
 ```
 
 2. 리스트 컴프리헨션을 중첩하여 위 결과를 똑같이 출력한다.
-```
-In [12]: [(i,j) for i in range(0,7,1) for j in range(0,4,1)]
- ```
+```In [12]: [(i,j) for i in range(0,7,1) for j in range(0,4,1)] ```
+ 
 3. 1, 2번의 반복문에서 튜플의 첫 번째 항목이 짝수일때만 출력하도록 조건을 변경한다.
 ```
 In [31]: for i in range(2,10):
@@ -149,9 +146,9 @@ In [31]: for i in range(2,10):
     ...:         continue
     ...:     for j in range(2,10,1):
     ...:         print('({}, {})'.format(i,j))
-    
 In [32]: [(i,j) for i in range(7) if i%2 == 0 for j in range(4)]
 ```
+
 4. 1000에서 2000까지의 숫자 중, 홀수의 합을 구해본다.
 ```
 i=1000
@@ -162,6 +159,7 @@ In [22]: while(i<=2000):
     ...:     	i+=1;
     ...: 	print(sum)
 ```
+
 5. 리스트 컴프리헨션을 사용하여 구구단 결과를 갖는 리스트를 만들고,  
  해당 리스트를 for문을 사용해 구구단 형태로 나오도록 출력해본다.
 각 단마다 한 번 더 줄바꿈을 넣어준다.
@@ -179,6 +177,7 @@ In [42]: for i in range(2,10):
     ...:         print('{} x {} = {}'.format(i,j,result_list[index]))
     ...:         index+=1
 ```
+
 6. 1에서 99까지의 정수 중, 7의 배수이거나 9의 배수인 정수인 리스트를 생성한다. 
  단, 7의 배수이며 9의 배수인 수는 한 번만 추가되어야 한다.
 ```
@@ -190,11 +189,10 @@ In [35]: for i in range(1,100):
 In [36]: print(com_list)
 [7, 9, 14, 18, 21, 27, 28, 35, 36, 42, 45, 49, 54, 56, 63, 70, 72, 77, 81, 84, 90, 91, 98, 99]
 In [38]: print(list(set(com_list)))
+```
 
-
-#### enumerate
-iterate 하는 횟수를 알고   싶을 때, 사용
-
+### enumerate
+- iterate 하는 횟수를 알고   싶을 때, 사용
 ```
 In [34]: for index, x in enumerate(range(1002,1010)):
     ...:     print('index: {}, value :{}'.format(index, x))
@@ -207,6 +205,7 @@ index: 4, value :1006
 index: 5, value :1007
 index: 6, value :1008
 index: 7, value :1009
+```
 
 # 함수
 - 반복적인 작업을 미리 정의해 놓은 것.
@@ -215,10 +214,11 @@ In [35]: def func():
     ...:     for i in range(2,10):
     ...:         print('call func')
     ...:         
-
 In [36]: func
 Out[36]: <function __main__.func>
-'__main__' 의미는 module
+```
+<span color=red>__main__</span> 의미는 module
+
 
 ###함수 실행
 ### 매개변수와 인자의 차이
@@ -226,7 +226,7 @@ Out[36]: <function __main__.func>
 함수 내부에서 함수에게 전달되어 온 변수는 매개변수라 부르며, 
 함수를 호출할 때 전달하는 변수는 인자로 부른다.
 ```
-#### 위치 인자
+### 위치 인자
 - 매개변수의 순서대로 반드시 인자를 전달하여 사용해야만 하는 경우  
 ```
 In [51]: def get_student(name, age, gender):
@@ -241,7 +241,7 @@ In [53]: get_student('hanyeong.lee', 30, 'male')
 Out[53]: {'age': 30, 'gender': 'male', 'name': 'hanyeong.lee'}
 ```
 
-##키워드 인자.
+###키워드 인자
 - 키워드로 받을 인자는 가장 맨 뒤에 와야 함.  
 - 위치인자와 키워드인자를 동시에 쓴다면, 위치인자가 먼저 와야 한다
 ```
@@ -288,7 +288,7 @@ Out[93]: ['melon']
 
 ###위치인자 묶음(*)
 - 함수에 위치인자로 주어진 변수들의 묶음은 ```*매개변수명```으로 사용할 수 있다.
-- tuple 형식으로 return
+- ```tuple 형식으로 return```
 
 ```
 def print_args(*args):  
@@ -312,9 +312,9 @@ In [48]: print(type(result))
 ```
 
 
-##키워드 인자 묶음
+###키워드 인자 묶음
 - 함수에 키워드인자로 주어진 변수들의 묶음은 ```**매개변수명```으로 사용할 수 있다
-- dict 형식으로 return
+- ```dict 형식으로 return```
 
 ```
 In [56]: def all_args(*args, **kwargs):
@@ -390,6 +390,6 @@ Out[116]: 'TEST'
 
 ### 로컬 스코프에서 글로벌 스코프
 
-###global키워드와 인자(argument)전달의 차이
+### global키워드와 인자(argument)전달의 차이
 
 ### lamda 함수
