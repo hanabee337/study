@@ -1,7 +1,7 @@
-#제어문(if, for, while, comprehension)
+# 제어문(if, for, while, comprehension)
 
 ### if 문
-####한줄 표현식
+#### 한줄 표현식
 ```
 vacation = 7
 print('good') if vacation >= 7 else print('bad') if(vacation >=5) else print('soso')
@@ -66,9 +66,10 @@ Out[41]: [('red', 'apple'), ('green', 'melon'), ('yellow', 'banana')]
 
 ### Comprehension
 1. List Comprehension
+
 ```
 [표현식 for 항목 in iterable객체]
-예) >>> [item for item in range(1, 6)]
+예) [item for item in range(1, 6)]
 [1, 2, 3, 4, 5]
 
 In [43]: [item for item in range(1,6)]
@@ -96,6 +97,7 @@ Out[47]: [2, 4]
 ```
 
 2. Set Comprehension
+
 ```
 In [4]: g= (item for item in range(10))
 
@@ -126,19 +128,21 @@ In [7]: for i in (g):
 
 3. Generator Comprehension
 
-####실습
+#### 실습
 
 1. for문을 2개 중첩하여 (0,0), (0,1), (0,2), (0,3), (1,0), (1,1)..... (6,3)까지 출력되는 반복문을 구현한다.
 ```
 In [8]: for i in range(0,7,1):
    ...:     for j in range(0,4,1):
    ...:         print('({},{})'.format(i,j))
-   ...: 
+   ...:
 ```
 
 2. 리스트 컴프리헨션을 중첩하여 위 결과를 똑같이 출력한다.
-```In [12]: [(i,j) for i in range(0,7,1) for j in range(0,4,1)] ```
- 
+```
+In [12]: [(i,j) for i in range(0,7,1) for j in range(0,4,1)]
+```
+
 3. 1, 2번의 반복문에서 튜플의 첫 번째 항목이 짝수일때만 출력하도록 조건을 변경한다.
 ```
 In [31]: for i in range(2,10):
@@ -164,12 +168,13 @@ In [22]: while(i<=2000):
  해당 리스트를 for문을 사용해 구구단 형태로 나오도록 출력해본다.
 각 단마다 한 번 더 줄바꿈을 넣어준다.
 ```
-- case 1
+  case 1
 OK : ['{} X {} = {}'.format(i,j,i*j) for i in range(2,10) for j in range(2,10)]
 이렇게 하면 정상적인데,
 print문을 추가하면 이상하게 나옴. 구구단이 다 출력되고 나서도 None이 출력됨. why?
 NG:  [print('{} x {} = {}'.format(i,j,i*j)) for i in range(2,10) for j in range(2,10)]
-- case 2
+
+  case 2
 In [40]: result_list = [i*j for i in range(2,10) for j in range(2,10)]
 In [41]: index = 0
 In [42]: for i in range(2,10):
@@ -178,21 +183,20 @@ In [42]: for i in range(2,10):
     ...:         index+=1
 ```
 
-6. 1에서 99까지의 정수 중, 7의 배수이거나 9의 배수인 정수인 리스트를 생성한다. 
+6. 1에서 99까지의 정수 중, 7의 배수이거나 9의 배수인 정수인 리스트를 생성한다.
  단, 7의 배수이며 9의 배수인 수는 한 번만 추가되어야 한다.
 ```
 In [34]: com_list = []
 In [35]: for i in range(1,100):
     ...:     if(i%7==0 or i%9==0):
     ...:         com_list.append(i)
-    ...: 
+    ...:
 In [36]: print(com_list)
 [7, 9, 14, 18, 21, 27, 28, 35, 36, 42, 45, 49, 54, 56, 63, 70, 72, 77, 81, 84, 90, 91, 98, 99]
-In [38]: print(list(set(com_list)))
-```
+In [38]: print(list(set(com_list)))```
 
 ### enumerate
-- iterate 하는 횟수를 알고   싶을 때, 사용
+- iterate 하는 횟수를 알고 싶을 때, 사용
 ```
 In [34]: for index, x in enumerate(range(1002,1010)):
     ...:     print('index: {}, value :{}'.format(index, x))
@@ -220,10 +224,10 @@ Out[36]: <function __main__.func>
 <span color=red>__main__</span> 의미는 module
 
 
-###함수 실행
+### 함수 실행
 ### 매개변수와 인자의 차이
 ```
-함수 내부에서 함수에게 전달되어 온 변수는 매개변수라 부르며, 
+함수 내부에서 함수에게 전달되어 온 변수는 매개변수라 부르며,
 함수를 호출할 때 전달하는 변수는 인자로 부른다.
 ```
 ### 위치 인자
@@ -236,12 +240,12 @@ In [51]: def get_student(name, age, gender):
     ...:     'gender' : gender
     ...:     }
     ...:     return new_student
-    ...: 
+    ...:
 In [53]: get_student('hanyeong.lee', 30, 'male')
 Out[53]: {'age': 30, 'gender': 'male', 'name': 'hanyeong.lee'}
 ```
 
-###키워드 인자
+### 키워드 인자
 - 키워드로 받을 인자는 가장 맨 뒤에 와야 함.  
 - 위치인자와 키워드인자를 동시에 쓴다면, 위치인자가 먼저 와야 한다
 ```
@@ -258,7 +262,7 @@ In [61]: def return_list(val, result=[]):
     ...:         result = []
     ...:     result.append(val)
     ...:     return result
-    ...: 
+    ...:
 In [62]: return_list('apple')
 Out[62]: ['apple']
 
@@ -273,7 +277,7 @@ In [87]: def return_list2(val, result=None):
     ...:         result = []
     ...:     result.append(val)
     ...:     return result
-    ...: 
+    ...:
 
 In [88]: fruits_list = 'banana'
 In [89]: result = return_list2(fruits_list)
@@ -286,19 +290,18 @@ In [93]: result
 Out[93]: ['melon']
 ```
 
-###위치인자 묶음(*)
+### 위치인자 묶음(*)
 - 함수에 위치인자로 주어진 변수들의 묶음은 ```*매개변수명```으로 사용할 수 있다.
 - ```tuple 형식으로 return```
+```
+def print_args(*args):
+  print(args)
+```
 
 ```
-def print_args(*args):  
-  print(args)
-  ```
-  
-  ```
-  In [43]: def print_arg(*arg):
-    ...:     print(arg)
-    ...:     
+In [43]: def print_arg(*arg):
+...:     print(arg)
+...:
 
 In [44]: print_arg(1,2,'abc')
 (1, 2, 'abc')
@@ -311,9 +314,8 @@ In [48]: print(type(result))
 <class 'NoneType'>
 ```
 
-
-###키워드 인자 묶음
-- 함수에 키워드인자로 주어진 변수들의 묶음은 ```**매개변수명```으로 사용할 수 있다
+### 키워드 인자 묶음
+- 함수에 키워드인자로 주어진 변수들의 묶음은 ```**매개변수명**```으로 사용할 수 있다
 - ```dict 형식으로 return```
 
 ```
@@ -342,13 +344,15 @@ kwargs count 2
 ```
 
 
-###docstring
+### docstring
 ```
 In [62]: def print_args(*args):
     ...:     'Print Positional arguments and return argument count'
     ...:     print(args)
     ...:     return len(args)
+```
 
+```
 In [63]: help(print_args)
 
 Help on function print_args in module __main__:
@@ -357,17 +361,18 @@ print_args(*args)
 (END)
 ```
 
-###함수를 인자로 전달
+### 함수를 인자로 전달
 - 파이썬에선 ```함수도 객체``로 인식하기 때문에 함수로 인자 전달이 가능하다.
 ```
 def call_func():
 	print('call func')
-	
+
 def excute_call_func(func):
 	func()
 
 execute_call_func(call_func)
 ```
+
 ### 내부 함수
 - 함수 안에서 또 다른 함수를 정의해 사용할 수 있다.
 ```
@@ -375,7 +380,7 @@ In [107]: def outer(val):
      ...:     def inner(string):
      ...:         return string.upper()
      ...:     return inner(val)
-     ...: 
+     ...:
 In [109]: outer("test")
 Out[109]: 'TEST'
 
@@ -383,7 +388,7 @@ In [115]: def outer2(val):
      ...:     	def inner2(string):
      ...:         	return string.upper()
      ...:     return inner2(val)
-     ...: 
+     ...:
 In [116]: outer2('test')
 Out[116]: 'TEST'
 ```
