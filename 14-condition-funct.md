@@ -215,7 +215,7 @@ index: 7, value :1009
 In [35]: def func():
     ...:     for i in range(2,10):
     ...:         print('call func')
-    ...:         
+    ...: 
 In [36]: func
 Out[36]: <function __main__.func>
 ```
@@ -228,6 +228,17 @@ Out[36]: <function __main__.func>
 함수 내부에서 함수에게 전달되어 온 변수는 매개변수라 부르며,
 함수를 호출할 때 전달하는 변수는 인자로 부른다.
 ```
+~~~
+# 함수 정의 때는 매개변수
+def func(매개변수1, 매개변수2):
+  ...
+# 함수 호출 시에는 인자
+>>> func(인자1, 인자2)
+~~~
+
+### None 객체
+- 함수에서 return 값이 없을 경우, 아무것도 없다는 뜻의 ```None``` 객체를 가짐.
+
 ### 위치 인자
 - 매개변수의 순서대로 반드시 인자를 전달하여 사용해야만 하는 경우  
 ```
@@ -244,8 +255,9 @@ Out[53]: {'age': 30, 'gender': 'male', 'name': 'hanyeong.lee'}
 ```
 
 ### 키워드 인자
-- 키워드로 받을 인자는 가장 맨 뒤에 와야 함.  
-- 위치인자와 키워드인자를 동시에 쓴다면, 위치인자가 먼저 와야 한다
+- 매개변수의 이름을 지정하여 인자로 전달하여 사용하는 경우.
+- 키워드로 받을 인자는 가장 맨 뒤에 와야 함.
+- 위치인자와 키워드인자를 동시에 쓴다면, 위치인자가 먼저 와야 한다.
 ```
 In [54]: get_student(age=30,gender ='male', name='Kim')
 Out[54]: {'age': 30, 'gender': 'male', 'name': 'Kim'}
@@ -253,7 +265,9 @@ result = get_student(age=30,gender ='male', name='Kim'
 print(type(result))
 <class 'dict'>
 ```
-
+### 기본 매개변수 값의 정의 시점
+>	기본 매개변수값은 함수가 실행될 때 마다 계산되지 않고,  
+	함수가 정의되는 시점에 계산되어 계속해서 사용된다.
 ```
 In [61]: def return_list(val, result=[]):
     ...:     if result is None:
@@ -289,7 +303,7 @@ Out[93]: ['melon']
 ```
 
 ### 위치인자 묶음(*)
-- 함수에 위치인자로 주어진 변수들의 묶음은 ```*매개변수명```으로 사용할 수 있다.
+- 함수에 위치인자로 주어진 변수들의 묶음은 ```매개변수명```으로 사용할 수 있다.
 - ```tuple 형식으로 return```
 ```
 def print_args(*args):
@@ -313,16 +327,15 @@ In [48]: print(type(result))
 ```
 
 ### 키워드 인자 묶음
-- 함수에 키워드인자로 주어진 변수들의 묶음은 ```**매개변수명**```으로 사용할 수 있다
+- 함수에 키워드인자로 주어진 변수들의 묶음은 ```매개변수명```으로 사용할 수 있다
 - ```dict 형식으로 return```
 
 ```
 In [56]: def all_args(*args, **kwargs):
     ...:     print('positional arg:', args)
     ...:     print('keyword args: ', kwargs)
-    ...:     
-
-In [57]: all_args('one','two','three')
+    ...: 
+ In [57]: all_args('one','two','three')
 positional arg: ('one', 'two', 'three')
 keyword args:  {}
 
@@ -340,8 +353,6 @@ In [63]: def print_kwargs(**kwargs):
 In [64]: print_kwargs(a='abc', b='def')
 kwargs count 2
 ```
-
-
 ### docstring
 ```
 In [62]: def print_args(*args):
@@ -349,7 +360,6 @@ In [62]: def print_args(*args):
     ...:     print(args)
     ...:     return len(args)
 ```
-
 ```
 In [63]: help(print_args)
 
@@ -360,7 +370,7 @@ print_args(*args)
 ```
 
 ### 함수를 인자로 전달
-- 파이썬에선 ```함수도 객체``로 인식하기 때문에 함수로 인자 전달이 가능하다.
+- 파이썬에선 ```함수도 객체```로 인식하기 때문에 함수로 인자 전달이 가능하다.
 ```
 def call_func():
 	print('call func')
