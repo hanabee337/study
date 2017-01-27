@@ -355,12 +355,15 @@ In [64]: print_kwargs(a='abc', b='def')
 kwargs count 2
 ```
 ### docstring
+ - 함수 정의 후, 몸체 시작 부분에 문자열로 작성한다.
+
 ```
 In [62]: def print_args(*args):
     ...:     'Print Positional arguments and return argument count'
     ...:     print(args)
     ...:     return len(args)
 ```
+
 ```
 In [63]: help(print_args)
 
