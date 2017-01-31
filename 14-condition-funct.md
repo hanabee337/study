@@ -195,6 +195,7 @@ In [38]: print(list(set(com_list)))
 
 ### enumerate
 - iterate 하는 횟수를 알고 싶을 때, 사용
+- 인덱스와 해당 값을 return하는 객체
 ```
 In [34]: for index, x in enumerate(range(1002,1010)):
     ...:     print('index: {}, value :{}'.format(index, x))
