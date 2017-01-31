@@ -476,7 +476,7 @@ def return_sum_sub(arg1, arg2):
 ```
 5. 위치인자 묶음을 매개변수로 가지며, 위치인자가 몇 개 전달되었는지를 print하고 개수를 리턴해주는 함수를 정의하고 사용해본다.
 ```python
-111def print_args_info(*args, **kwargs):
+111 def print_args_info(*args, **kwargs):
 112     args_count = len(args)
 113     print('args count : {}'.format(args_count))
 114     return args_count
