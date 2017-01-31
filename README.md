@@ -31,5 +31,7 @@
 		14-ubuntu-terminator.md
 		14-condition-funct.md
 		14-html-css-homework-review.md
-			
+	01/31   
+                15-func.md
+
 #2. 수업 내용 관련 자료 모으는 중...
