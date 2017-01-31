@@ -78,7 +78,7 @@ after local2(), local1 locals(): {'local2': <function local1.<locals>.local2 at 
 - 로컬 스코프 내부에는 또 다른 로컬 스코프가 존재할 수 있다.
 - 전역 스코프가 아닌, 자신의 바로 바깥 영역의 로컬 스코프(자신보다 한 단계 위의 로컬 스코프)의 데이터를 참조하고자 한다면, ```nonlocal```키워드를 사용한다.
 - nonlocal 키워드는 위를 타고 간다.
-```
+```python
   1 champion = 'Lux'
   2
   3 def local1():
@@ -108,7 +108,7 @@ after local2(), local1 locals(): {'local2': <function local1.<locals>.local2 at 
 ### global 인자와 argument(인자) 전달의 차이
 - 실습(diff_global_arg.py)
 - 결과
-```
+```python
 global_level = 100
 
 def arg_level_add(value):
@@ -137,7 +137,7 @@ global_level : 130
 ```
 - ```인자```로 전달하였기 때문에, ```매개변수인 value의 값```을 변경하는 것은 ```전역 변수인 global_level```에는 영향을 주지 않는다.
  - 리스트로 변경 후, 결과
-```
+```python
 global_level = [100]
 
 def arg_level_add(value):
@@ -204,7 +204,7 @@ lambda <매개변수> : <표현식>
 - ```함수의 전역 영역은 해당 함수가 정의된 모듈의 전역 영역```으로, ```전역변수```는 ```모듈의 영역에 영향```을 받는다.
 
 #### 내부함수의 closure
-```
+```python
   1 level = 0
   2 def outter():
   3     level = 50
@@ -242,7 +242,7 @@ lambda <매개변수> : <표현식>
 - inner함수의 호출 결과가 아닌 ```함수 자체를 반환```하기 때문에, func변수는 실행할 수 있는 ```함수객체```
 - inner함수가 사용하는 level변수는 ```nonlocal키워드```를 사용했기 때문에 ```outter에 새로 정의된 지역변수 level```을 사용한다.
 
-```
+```python
   1 level = 0
   2 
   3 def outter():
@@ -270,7 +270,7 @@ lambda <매개변수> : <표현식>
  - func 는 outter 함수를 통해 inner 함수에 있는 영역까지를 반환 받았다. inner 함수가 return 됐으니까.
  - closure 영역을 이해시키기 위한 예제
  - inner 함수에서
-```
+```python
   level = 0
   2 def outter():
   3     level = 50
@@ -319,7 +319,7 @@ func1 id : 140421968650856
 9
 ```
 -  closure 영역은 하기 부분
-```
+```python
   3     level = 50
   4 
   5     def inner():
@@ -340,7 +340,7 @@ func1 id : 140421968650856
 ```
 함수를 실행할 때, ```로그를 남길 때```, 주로 **decorator 함수**를 사용
 ```
-```
+```python
   1 def print_args(func):
   2     def inner_func(*args, **kwargs):
   3         print('args : ', args)
@@ -386,7 +386,7 @@ kwargs :  {}
 - 함수를 통해서 만들어지며, 함수 내부의 반복문에서 ```yield```키워드를 사용하면 제네레이터가 된다.
 - list 가 100만개 있으면, 100만개 전부 메모리를 써야 되지만,
 generator에서는 for, while 구간 만큼의 메모리만 차지하므로, 메모리를 save 할 수 있다.
-```
+```python
 def generator(n):
     i = 0
     while i < n:
@@ -415,7 +415,7 @@ print x
 ### 실습
 1. 매개변수로 문자열을 받고, 해당 문자열이 red면 apple을, yellow면 banana를, green이면 melon을, 어떤 경우도 아닐 경우 I don't know를 리턴하는 함수를 정의하고, 사용하여 result변수에 결과를 할당하고 print해본다.
 2. 1번에서 작성한 함수에 docstring을 작성하여 함수에 대한 설명을 달아보고, help(함수명)으로 해당 설명을 출력해본다.
-```
+```python
  def print_fruits(string):
  25     """return apple if argument is red \n
  26     return banana if argument is yellow \n
@@ -440,7 +440,7 @@ print x
 ```
 
 3. 한 개 또는 두 개의 숫자 인자를 전달받아, 하나가 오면 제곱, 두개를 받으면 두 수의 곱을 반환해주는 함수를 정의하고 사용해본다.
-```
+```python
 # 갯수가 안정해져 있을 경우
 def multiply_or_square(*args):
         if(len(args) == 1):
@@ -469,13 +469,13 @@ def sqaure_or_multi(arg1, arg2 = None):
 # 갯수가 정해져 있을 경우
 ```
 4. 두 개의 숫자를 인자로 받아 합과 차를 튜플을 이용해 동시에 반환하는 함수를 정의하고 사용해본다.
-```
+```python
 def return_sum_sub(arg1, arg2):
  	print(arg1+arg2, arg1-arg2 if arg1 > arg2 else arg2 - arg1)
  return_sum_sub(3,5)
 ```
 5. 위치인자 묶음을 매개변수로 가지며, 위치인자가 몇 개 전달되었는지를 print하고 개수를 리턴해주는 함수를 정의하고 사용해본다.
-```
+```python
 111def print_args_info(*args, **kwargs):
 112     args_count = len(args)
 113     print('args count : {}'.format(args_count))
@@ -485,7 +485,7 @@ def return_sum_sub(arg1, arg2):
 117 print(result)
 ```
 6. 람다함수와 리스트 컴프리헨션을 사용해 한 줄로 구구단의 결과를 갖는 리스트를 생성해본다.
-```
+```python
 def make_gugu():
     ret = []
     for i in range(2,10):
@@ -552,7 +552,7 @@ print(result)
 		- 알고리즘 진행과정 그려보기
 		- 의사코드(Psuedo code) 작성
 		- 실제 코드 작성
-```
+```python
 DEBUG = True
 source = [9, 1, 6, 8, 4, 3, 2, 0, 7, 5]
 length = len(source)
