@@ -1,14 +1,13 @@
 #pyenv, virtualenv, iPython 설치 및 설정(Ubuntu용)
 **Reference** : <https://github.com/LeeHanYeong/Fastcampus-WPS-4th/blob/master/Python/01.%20pyenv,%20virtualenv,%20iPython%20%EC%84%A4%EC%B9%98%20%EB%B0%8F%20%EC%84%A4%EC%A0%95.md>
 
-
 ###pyenv
 - local에 다양한 python 버전을 설치,사용할 수 있도록 함.
-- pyenv는 프로젝트별로 파이썬 버전을 따로 관리할 수 있도록 도와주는 라이브러리.
+- **pyenv**는 ```프로젝트별로 파이썬 버전을 따로 관리```할 수 있도록 도와주는 라이브러리.
 - 여러 프로젝트를 동시에 진행하다보면, 어떤 프로젝트에서는 2.7을, 어떤 프로젝트에서는 3.4를 사용하는 식으로 다양한 버전의 사용할 수도 있고, 각각에 설치된 라이브러리간 충돌이 일어날 수도 있다.
 
 ###virtualenv
-- virtualenv는 파이썬 개발환경을 프로젝트별로 분리해서 관리할 수 있게 해주는 라이브러리.
+- **virtualenv**는 ```파이썬 개발환경을 프로젝트별로 분리해서 관리```할 수 있게 해주는 라이브러리.
 - 위의 pyenv와 다른 점은, **pyenv는 파이썬의 버전**을 관리해주는 것이며, **virtualenv는 파이썬 패키지 설치 환경**을 따로 관리해준다.
 - local에 다양한 파이썬 환경을 구축하고 사용할 수 있도록 함.
 - 일반적으로 ```python package```라고 부르는(```pip install을 통해서 설치하는```)패키지들에 대한 의존성을 해결할 수 있다.
@@ -119,3 +118,7 @@ $ pip install ipython
 ![ ](imgs/ipython-installtion.png  "ipython install guide")
 
 
+### 실습 관련 내용은 17-pyenv-virtualenv.md 참조바람
+```html
+<https://github.com/hanabee337/study/blob/master/17-pyenv-virtualenv.md>
+```
