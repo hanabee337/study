@@ -1,0 +1,35 @@
+#pycharm에서 환경 설정
+pycharm 실행하여 home/hanabee2/projects/python/crawling에서 craw.py 파일 생성. 
+1. alt + F12 : Terminal 창 띄우기
+2. pyenv version 입력하여 가상환경(virtualenv)이 적용된 터미널 확인(pycharm 하단의 terminal에서 확인)
+pycharm 하단의 terminal에서 하기 입력
+# install beautifulsoup4
+3. $ pip install beautifulsoup4
+#install requests
+4. $ pip install requests
+5. pycharm 환경에서 crawl.py 파일을 open한 후, import requests 입력
+정상동작 확인은 다음 라인에서 requests 모듈의 함수를 입력해서
+import가 주황색으로 바뀌면 정상적으로 import된 것임.
+```pycharm
+import requests
+requests.get('abc')
+```
+pycharm에서
+setting -> Project: Crawling -> Project Interpreter에서는, virtualenv로 설정하고
+settings -> Build -> Console -> Python Console 에서는 virtualenv가 아닌 .pyenv/version/~  으로 설정
+
+참조: <https://www.crummy.com/software/BeautifulSoup/bs4/doc/>
+참조: <http://docs.python-requests.org/en/master/user/quickstart/#passing-parameters-in-urls>
+
+### local에 가상 환경 지정
+- pyenv local fc-python
+- 시스템에 있는 python을 건드리지 않기 위해 pyenv 설치 및 설정
+- python & pyenv & virtualenv에 대해 의미 파악 확인.
+
+### html parser(해석기)
+- <https://www.crummy.com/software/BeautifulSoup/bs4/doc/>
+- Beautiful Soup supports the HTML parser included in Python’s standard library, but it also supports a number of third-party Python parsers. One is the lxml parser.
+- pip install lxml
+
+# 실습
+- projects/python/crawling/crawl.py
