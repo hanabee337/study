@@ -159,5 +159,5 @@ A) README 파일에다가 inform해주기.
 `/home/<자기유저명>/.pyenv/versions/3.4.3/env/<가상환경이름>/bin/python`
 로 파이참에 프로젝트 인터프리터 설정해준다. 
 ```
-	
+![pycharm-virtualenv-path](imgs/pycharm-virtualenv-path.png  "pycharm-virtualenv-path")	
 	
