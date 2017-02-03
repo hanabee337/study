@@ -9,9 +9,14 @@
 	- $ pip install beautifulsoup4
 6. install requests
 	- $ pip install requests
-7. pycharm 환경에서 crawl.py 파일을 open한 후, import requests 입력
+7. 해석기 설치하기
+- 뷰티플수프는 파이썬 표준 라이브러리에 포함된 HTML 해석기를 지원하지만, 또 수 많은 제-삼자 파이썬 해석기도 지원한다.
+그 중 하나는 lxml 해석기이다. 설정에 따라, 다음 명령어들 중 하나로 lxml을 설치하는 편이 좋을 경우가 있다. 
+	- $pip install lxml
+8. pycharm 환경에서 crawl.py 파일을 open한 후, import requests 입력.
 정상동작 확인은 다음 라인에서 requests 모듈의 함수를 입력해서
 import가 주황색으로 바뀌면 정상적으로 import된 것임.
+
 ```pycharm
 import requests
 requests.get('abc')
