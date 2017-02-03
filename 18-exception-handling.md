@@ -97,7 +97,7 @@ else:
 	print문으로 사용되고 싶다면 \_\_str\_\_메서드를 오버라이드 해준다.
 	- projects/python/except/custom_exception.py 참조
 	
-```
+```python
 import re
 
 class NotMatchedException(Exception) :
