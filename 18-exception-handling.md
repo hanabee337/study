@@ -81,6 +81,7 @@ else:
     예외가 발생하지 않았을 시 실행할 코드
 ```
 - projects/python/except/custom_exception.py 참조
+
 ### try ~ finally
 - ```finally문```은 try이후 예외가 발생하건, 하지않건 무조건 마지막에 실행된다.
 - projects/python/except/custom_exception.py 참조
