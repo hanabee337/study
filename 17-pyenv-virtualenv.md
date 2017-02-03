@@ -141,14 +141,23 @@ A) README 파일에다가 inform해주기.
 6. ipython도 지워졌으므로, 설치를 다시 해줘야 한다.
 	- $ pip install ipython
 
-7.  BeautifulSoup4 설치 명령
+7. crawling을 하기 위한 패키지 설치
+	- beautifulSoup4
+	- requests
+	- lxml
+8.  BeautifulSoup4 설치 명령
 	- $ pip install beautifulsoup4
 
-8. requests 패키지 설치 명령 
+9. requests 패키지 설치 명령 
 	- $ pip install requests
 
-9. PyCharm에서 환경 설정을 해줘야 하는데, Ubuntu에서는 
+10. lxml 설치
+	- $ pip install lxml
+
+11. PyCharm에서 환경 설정을 해줘야 하는데, Ubuntu에서는 
 ```
 `/home/<자기유저명>/.pyenv/versions/3.4.3/env/<가상환경이름>/bin/python`
 로 파이참에 프로젝트 인터프리터 설정해준다. 
 ```
+	
+	
