@@ -80,15 +80,15 @@ except:
 else:
     예외가 발생하지 않았을 시 실행할 코드
 ```
-- projects/python/except/custom_exception.py 참조
+- 하기 코드 참조
 
 ### try ~ finally
 - ```finally문```은 try이후 예외가 발생하건, 하지않건 무조건 마지막에 실행된다.
-- projects/python/except/custom_exception.py 참조
+- 하기 코드 참조
 
 ### 예외 발생시키기(raise)
 - 예외를 발생시킬때는 raise구문을 사용한다.
-- projects/python/except/custom_exception.py 참조
+- 하기 코드 참조
 
 ### 실습
 - 예외 만들기
@@ -96,3 +96,75 @@ else:
 	- 초기화 메서드에서 예외에서 처리할 데이터를 받고,
 	print문으로 사용되고 싶다면 \_\_str\_\_메서드를 오버라이드 해준다.
 	- projects/python/except/custom_exception.py 참조
+	
+```
+import re
+
+class NotMatchedException(Exception) :
+    # 에외 자체(NotMatchedException 함수)에다가 어디를 찾다가 에러가 발생했다는 정보를 전달
+    
+    def __init__(self, re_pattern=None, source=None) :
+        # 정규표현식 compile된 객체를 찾을 수 있다
+        # 만약 인자로 주어진 re_pattern 객체가
+        # re._pattern.type형객체라면
+        # (컴파일된 정규표현식 패턴 객체)
+        # self.pattern_str 속성에 re_pattern.pattern값을 할당
+        if isinstance(re_pattern, re._pattern_type):
+            self.pattern_str = re_pattern.pattern
+
+        # re_pattern 객체가 str(문자열)형일 경우
+        # self.pattern_str 속성에 해당 값을 그대로 할당
+        elif isinstance(re_pattern, str) :
+            self.pattern_str = re_pattern
+
+        self.source = source
+
+    def __str__(self):
+        return 'Pattern ({}) is not matched in source({})'.format(self.pattern_str, self.source)
+
+def search_from_source(pattern, source):
+    m = re.search(pattern, source)
+    if m :
+        return m
+    else :
+        raise NotMatchedException(pattern, source)
+
+try :
+    print('--try search_from_source--')
+    source = 'Lux, the Lady of Luminosity'
+    # 매칭되지 않는 str
+    pattern_str1 = 'Ladyyyy'
+    # 매칭되는 str
+    pattern_str2 = r'\w+\s+Lady\s+\w+'
+    pattern = re.compile(pattern_str1)	------------------> (1)
+    #pattern = re.compile(pattern_str2) ----------------> (2)
+    print(type(pattern))
+    m = search_from_source(pattern, source)
+    
+except NotMatchedException as e:
+    print(e)
+else :
+    print(' result : {}'.format(m.group()))
+finally :
+    print('--end search_from_source--')
+
+print('----Program Terminate-----')
+```
+- (1)의 결과
+```python
+$ python custom_exception.py
+--try search_from_source--
+<class '_sre.SRE_Pattern'>
+Pattern (Ladyyyy) is not matched in source(Lux, the Lady of Luminosity)
+--end search_from_source--
+----Program Terminate-----
+```
+- (2)의 결과
+```python
+$ python custom_exception.py
+--try search_from_source--
+<class '_sre.SRE_Pattern'>
+ result : the Lady of
+--end search_from_source--
+----Program Terminate-----
+```
