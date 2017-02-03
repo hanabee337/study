@@ -136,8 +136,8 @@ try :
     pattern_str1 = 'Ladyyyy'
     # 매칭되는 str
     pattern_str2 = r'\w+\s+Lady\s+\w+'
-    pattern = re.compile(pattern_str1)	------------------> (1)
-    #pattern = re.compile(pattern_str2) ----------------> (2)
+    pattern = re.compile(pattern_str1)		-------------> (1)
+    #pattern = re.compile(pattern_str2) 	-------------> (2)
     print(type(pattern))
     m = search_from_source(pattern, source)
     
