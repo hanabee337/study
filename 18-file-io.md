@@ -138,7 +138,7 @@ Final Spark
 ```
 - 각 줄에 줄바꿈(\n)문자가 있으므로, 한 칸 씩 띄어짐.
 
-```
+```python
 In [16]: for line in lines :
     ...:     print(line, end='')
     ...: 
