@@ -346,7 +346,33 @@ print('\n')
 Shop.show_description()
 Shop.change_description('이것은 Shop 클래스의 객체이다')
 Shop.show_description()
+
+- 결과
+상점 (Lotteria)
+ 유형: 패스트푸드
+ 주소: 강남구
+
+상점 (MacDonald)
+ 유형: fast-food
+ 주소: 압구정
+
+상점 (MacDonald)
+ 유형: fast-food
+ 주소: 압구정
+
+상점 (MacDonald)
+ 유형: junk-food
+ 주소: 압구정
+
+Set new shop type: (맛집)
+상점 (MacDonald)
+ 유형: 맛집
+ 주소: 압구정
+
+Class Description : Python Shop Class
+Class Description : 이것은 Shop 클래스의 객체이다
 ```
+
 - 위의 결과에서 보듯,
 - **```property, setter decorator```**를 사용하면  
 **```해당 메서드```**를 마치 **```속성 이름```**처럼 접근을 할 수가 있다.
