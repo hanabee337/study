@@ -10,8 +10,8 @@
 - python version
 ```파이썬은 3.4.3 버전```으로
 - install
-```python -m django --version```
-```1.10.5```
+```python -m django --version```  
+```1.10.5```  
 
 ###2. Django tutorial
 <http://django-document-korean.readthedocs.io/ko/latest/intro/index.html>
