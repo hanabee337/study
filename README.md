@@ -31,7 +31,17 @@
 		14-ubuntu-terminator.md
 		14-condition-funct.md
 		14-html-css-homework-review.md
-	01/31   
-                15-func.md
+	01/31
+		15-func.md
+	02/01
+		16-crawling.md
+		16-module_package.md
+	02/02
+		17-class.md
+		17-pyenv-virtualenv.md
+	02/03
+		18-regex.md : Not yet
+		18-exception-handling.md
+		18-file-io.md
 
 #2. 수업 내용 관련 자료 모으는 중...
