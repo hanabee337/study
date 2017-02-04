@@ -106,6 +106,7 @@ lotteria.show_info()
 	유형: 패스트푸드
  	주소: 강남구
 ```
+
 > **실습**
 >	
 > `Shop`클래스에 `change_type`인스턴스 메서드를 추가하고, 
@@ -114,6 +115,7 @@ lotteria.show_info()
 > 새로운 `Shop`인스턴스를 하나 생성하고, `show_info()` 인스턴스 메서드를 
 > 사용해 본 후 `change_type`메서드를 사용해 `shop_type`을 변경시키고,
 > 다시 `show_info()`메서드를 실행해 결과가 잘 반영되었는지 확인한다
+
 ```python
 class Shop :
     description = 'Python Shop Class'
@@ -148,6 +150,7 @@ mac_donald.show_info()
  유형: junk-food
  주소: 압구정
 ```
+
 ### 클래스 메서드
 - ```클래스 메서드```는 ```클래스 속성에 대해 동작```하는 메서드이다.
 - 위의 인스턴스 메서드와 달리 호출 주체가 클래스이며,
@@ -157,9 +160,11 @@ mac_donald.show_info()
 자동으로 바뀌어 전달된다.
 - ```@classmethod``` 데코레이터를 붙여 사용한다.
 - class의 속성보다 instance 의 속성이 우선이다.
+
 > **실습**
 >	
 > ```Shop```클래스에 클래스 속성 ```description```을 수정하는 클래스 메서드를 작성한다.
+
 ```python
 class Shop :
     description = 'Python Shop Class'
@@ -191,6 +196,7 @@ Shop.show_description()
 Class Description : Python Shop Class
 Class Description : 이것은 Shop 클래스의 객체이다
 ```
+
 ## 속성 접근 지정자
 - ###**```캡슐화```** 
 	- 정보를 은닉하는 것
@@ -212,6 +218,7 @@ Class Description : 이것은 Shop 클래스의 객체이다
 사용하지 않고도 내부 내용을 변경할 수 있다.
 >	
 > ```shop_type```의 이름을 ```__shop_type```으로 바꾸고 ```외부에서 직접 변경해본다.```
+
 ```python
 class Shop :
     description = 'Python Shop Class'
@@ -342,7 +349,7 @@ Shop.show_description()
 ```
 - 위의 결과에서 보듯,
 - **```property, setter decorator```**를 사용하면 
-<span color=red>```해당 메서드```</span>를 마치 **```속성 이름```**처럼 접근을 할 수가 있다.
+**```해당 메서드```**를 마치 **```속성 이름```**처럼 접근을 할 수가 있다.
 
 ## 상속
 - 거의 비슷한 기능을 수행하나, 약간의 추가적인 기능이 필요한 다른 클래스가 필요할 경우,
