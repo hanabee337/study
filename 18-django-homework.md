@@ -1,15 +1,16 @@
 # Django Install Guide
 
 ###1. 장고 설치 가이드
-- path
-```projects/django/tutorial```
+- path  
+```projects/django/tutorial```  
 	
-- virtualenv 
-```django_tutorial로``` 만들것.
+- virtualenv  
+```django_tutorial로``` 만들것  
 
-- python version
-```파이썬은 3.4.3 버전```으로
-- install
+- python version  
+```파이썬은 3.4.3 버전```으로  
+
+- install  
 ```python -m django --version```  
 ```1.10.5```  
 
