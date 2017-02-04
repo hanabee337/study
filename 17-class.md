@@ -387,11 +387,41 @@ Class Description : 이것은 Shop 클래스의 객체이다
 class Restaurant(Shop):
     pass
 ```
+
 ### 메서드 오버라이드
 - 상속받은 클래스에서, ```부모 클래스의 메서드와는 다른 동작```을 하도록 할 수 있는데,
 이 경우 **부모 클래스의 메서드를 덮어씌워서 사용**하도록 하며,
 이 방법을 ```메서드 오버라이드(method override)```라고 한다.
-> **실습**
+
+>**실습**
+> 
+>```show_info 메서드```에서 ```상점```이 아닌 ```식당```으로 표현되도록  
+메서드를 오버라이드해 새로 정의해본다.
+
+```python
+class Shop :
+    description = 'Python Shop Class'
+    def __init__(self, name, shop_type, addr) :
+        self.name = name
+        self.shop_type = shop_type
+        self.addr = addr
+
+    def show_info(self):
+        print('상점 ({})\n 유형: {}\n 주소: {}'.format(self.name, self.shop_type, self.addr))
+
+class Restaurant(Shop) :
+    def show_info(self):
+        print('음식점 ({})\n 유형: {}\n 주소: {}\n'.format(self.name, self.shop_type, self.addr))
+
+lotteria = Restaurant('Lotteria', '패스트푸드', '강남구')
+lotteria.show_info()
+
+- 결과
+>>> python class_practice2.py
+음식점 (Lotteria)
+ 유형: 패스트푸드
+ 주소: 강남구
+```
 
 ### 부모 클래스의 메서드를 호출 (super)
 - 자식클래스의 메서드에서 부모 클래스에서 사용하는 메서드의 전체를 새로 쓰는것이 아니라,
@@ -403,18 +433,62 @@ class Restaurant(Shop):
         super().__init__(name, shop_type, address)
         self.rating = rating
 ```
-- 위 코드의 경우, ```super()메서드를 사용```해서 부모의 ```__init__```메서드를 호출한다.
+> **실습**
+> 위 코드의 경우, ```super()메서드를 사용```해서  
+부모의 ```__init__```메서드를 호출한다.
+
+```python
+class Shop :
+    description = 'Python Shop Class'
+    def __init__(self, name, shop_type, addr) :
+        self.name = name
+        self.shop_type = shop_type
+        self.addr = addr
+
+    def get_info(self):
+        return ('상점 ({})\n 유형: {}\n 주소: {}'.format(self.name, self.shop_type, self.addr))
+    def show_info(self):
+        print(self.get_info())
+
+class Restaurant(Shop) :
+    def __init__(self, name, shop_type, addr, avg_price) :
+        super().__init__(name, shop_type, addr)
+        self.avg_price = avg_price
+
+    def get_info(self):
+        ori = super().get_info()
+        return ori.replace('상점', '음식점') + '\n 평균가격: {}'.format(self.avg_price)
+
+mac_donald = Shop('Mac-Donald', 'fast-food', '압구정')
+mac_donald.show_info()
+print('\n')
+lotteria = Restaurant('Lotteria', '패스트푸드', '강남구', '세트에 5000원')
+lotteria.show_info()
+
+- 결과
+상점 (Mac-Donald)
+ 유형: fast-food
+ 주소: 압구정
+
+음식점 (Lotteria)
+ 유형: 패스트푸드
+ 주소: 강남구
+  평균가격: 세트에 5000원
+```
 
 ## 다형성
-- 같은 함수, 클래스만을 사용하는 것이 아니라,
+- **```동일한 실행```**에 대하여 **```다른 동작을 수행```**할 수 있도록 하는 것
+- 같은 함수, 클래스만을 사용하는 것이 아니라,  
 서로 다른 형태의 객체 메소드인데도 사용가능(?)
-- eat이라는 객체를 호출했지만, 실제 이 eat 이라는 메소드가 서로 다른 클래스에 있다. 기능을 다르게 한다.
-- 같은 이름의 함수에서 서로 다른 기능을 하는 함수 호출
+- eat이라는 객체를 호출했지만, 실제 이 eat 이라는 메소드가  
+서로 다른 클래스에 있어, 기능을 다르게 한다.
+- ```같은 이름의 함수```에서 ```서로 다른 기능을 하는 함수``` 호출
 - 같은 호출에 대해 다른 결과를 갖게 함.
-- 다형성을 지원하는 프로그래밍 언어에서는 같은 이름의 함수에서
+- 다형성을 지원하는 프로그래밍 언어에서는 같은 이름의 함수에서  
 서로 다른 기능을 하는 방식으로 프로그래밍을 할 수 있다.
-- 파이썬에서는 각 객체의 타입과 전혀 상관없이 해당 객체에서 만든
+- 파이썬에서는 각 객체의 타입과 전혀 상관없이 해당 객체에서 만든  
 같은 이름의 메서드들을 실행할 수 있다.
+
 ```python
 # 다형성 예제
 class User :
@@ -434,7 +508,7 @@ class Food :
 class Drink :
     def __init__(self, name) :
         self.name = name
-
+   
     def eat(self):
         print('{}를 다 마셨다.갈증 해소'.format(self.name))
 
@@ -444,6 +518,9 @@ drink1 = Drink('게토레이')
 
 user.eat_something(food1)
 user.eat_something(drink1)
+
+- 결과
+>>> python class_sample2.py 
+햄버거를 다 먹었다.배 부르다
+게토레이를 다 마셨다.갈증 해소
 ```
-실습
-Shop클래스에 클래스 속성 description을 수정하는 클래스 메서드를 작성한다.
