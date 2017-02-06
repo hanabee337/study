@@ -8,9 +8,9 @@
 ```
 
 - 기본적인 내용은 하기 파일 참조.
-```html
+
 <https://github.com/hanabee337/study/blob/master/13_pyenv_virtualenv_iPython_install_guide.md>
-```
+
 ### 1. 기존 생성된 가상환경 삭제하기
 - python이 있는 폴더에서 ```pip freeze```함.
 - 그렇게 하면 현재 버전들을 list-up해줌.
