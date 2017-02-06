@@ -265,6 +265,9 @@ $ python -c "import django; print(django.__path__)"
 <h1 id="site-name"><a href="{% url 'admin:index' %}">Polls Administration</a></h1>
 {% endblock %}
 ```
+
+![django-tutorial-part7](imgs/django-tutorial-part7.png  "django-tutorial-part7")
+
 - 이 방법을 사용하여 템플릿을 재정의하는 방법을 학습합니다. 
 실제 프로젝트에서는 아마
  django.contrib.admin.AdminSite.site_header 속성을 
@@ -281,6 +284,8 @@ Django가 admin/base_site.html을 렌더링 할 때,
 템플릿을 덮어 쓰려면, base_site.html로했던 것과 똑같은 일을 하면 됩니다.
 즉, 기본 디렉토리에서 그것을 커스텀 디렉토리로 복사하고 변경하십시오.
 
+![django-tutorial-tree](imgs/django-tutorial-tree.png  "django-tutorial-tree")
+
 ## 어플리케이션의 템플릿 사용자 정의
 - 그러나 DIRS가 기본설정으로 비어 있다면, 장고는 기본 관리자 템플릿을 어떻게 찾을까요? 
 - 그 해답은 APP_DIRS 설정이 True로 설정되어 있기 때문에,
@@ -292,10 +297,11 @@ Django가 admin/base_site.html을 렌더링 할 때,
  프로젝트 템플릿 대신 어플리케이션의 템플릿을 수정하는 것이 더 현명합니다. 
  그렇게 하면 다른 새 프로젝트에 투표 애플리케이션을 포함시킬 수 있고, 
  필요할 때는 커스텀 템플릿을 찾을수 있습니다.
+django-tutorial-tree
 
 ## admin 인덱스 페이지 수정하기
 
 
-http://127.0.0.1:8000/admin/polls/
-http://localhost:8000/polls/
+http://127.0.0.1:8000/admin/polls/  
+http://localhost:8000/polls/  
 http://127.0.0.1:8000/polls/
