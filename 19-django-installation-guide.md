@@ -63,4 +63,13 @@ Preferences -> Project -> Project Interpreter
 #### 9. Git설정
 - Repository Directory레벨에서 설정
 
+#### 10. shell_plus 실행
+- 파이썬 셀 ipython 실행
+- ipython이 설치가 안되어 있다면,  
+```$ pip install ipython```
+- django_extension이 설치가 안되어 있다면,  
+```$ pip install django_extension```
+- ipython과 django_extensions설치 후, ```setting.py```파일에 있는 
+INSTALLED_APPS 리스트에 ```django_extensions``` 추가
+- python manage.py shell_plus 실행
 
