@@ -61,5 +61,15 @@
 	
 	02/04
 		19-django-installation-guide.md
-	
+	02/05
+		19-making-django-app-part1.md
+		19-making-django-app-part2.md
+		19-making-django-app-part3.md
+		19-making-django-app-part4.md
+		19-making-django-app-part5.md
+		19-making-django-app-part6.md
+		19-making-django-app-part7.md
+	source code : 
+		<https://github.com/hanabee337/homework/tree/master/django>
+		
 #2. 수업 내용 관련 자료 모으는 중...
