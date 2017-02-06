@@ -70,6 +70,6 @@
 		19-making-django-app-part6.md
 		19-making-django-app-part7.md
 	source code : 
-		<https://github.com/hanabee337/homework/tree/master/django>
+		https://github.com/hanabee337/homework/tree/master/django
 		
 #2. 수업 내용 관련 자료 모으는 중...
