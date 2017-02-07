@@ -13,7 +13,8 @@
 12. git add -A후, git status로 잘 작동하는지 확인
 13. 문제 없으면, 첫 commit push
 14. pycharm interpreter 설정
-15. 추천 
+15. shell_plus 실행
+16. 추천 
 	- .gitignore 파일에 .idea/ 도 추가
 
 
