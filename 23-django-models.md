@@ -179,7 +179,7 @@ This explicit declaration defines how the two models are related.
 	permitted, but they will be treated as the two 
 	(different) sides of the many-to-many relationship. 
 	If there are ```more than two foreign keys``` though, 
-	you must also specify ```through_fields``` as 
+	you must also specify [through_fields](https://docs.djangoproject.com/en/1.10/ref/models/fields/#django.db.models.ManyToManyField.through_fields) as 
 	above, or a validation error will be raised.
 	- When defining a many-to-many relationship from 
 	a model to itself, using an intermediary model, 
