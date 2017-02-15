@@ -1,4 +1,4 @@
-#  Built-in template tags and filters
+# Built-in template tags and filters
 
 ### autoescape
 - Controls the current auto-escaping behavior. 
@@ -58,6 +58,7 @@ To do this, just give the {% cycle %} tag a name, using “as”, like this:
     This text will be HTML-escaped, and will appear in all lowercase.
 {% endfilter %}
 ```
+
 ### firstof
 - Outputs the first argument variable that is not False.
 ```
@@ -76,14 +77,17 @@ is eqivalnet to
 
 ### **```for```**
 - Loops over each item in an array, making the item available in a context variable
+
 ```
 {% for athlete in athlete_list %}
     <li>{{ athlete.name }}</li>
 {% endfor %}
 ```
+
 - You can loop over a list in reverse by using {% for obj in list reversed %}.
 
 - This can also be useful if you need to access the items in a dictionary.
+
 ```
 {% for key, value in data.items %}
     {{ key }}: {{ value }}
@@ -103,6 +107,7 @@ forloop.parentloop	|For nested loops, this is the loop surrounding the current o
 
 ### for ... empty
 - The for tag can take an optional {% empty %} clause whose text is displayed if the given array is empty or could not be found:
+
 ```
 <ul>
 {% for athlete in athlete_list %}
@@ -115,6 +120,7 @@ forloop.parentloop	|For nested loops, this is the loop surrounding the current o
 
 ### **```if```**
 - Boolean operators
+
 ```
 {% if athlete_list and coach_list %}
     Both athletes and coaches are available.
@@ -136,7 +142,9 @@ forloop.parentloop	|For nested loops, this is the loop surrounding the current o
     There are some athletes and absolutely no coaches.
 {% endif %}
 ```
+
 - Use of actual parentheses in the if tag is invalid syntax. If you need them to indicate precedence, you should use nested if tags.
+
 ```if (athlete_list and coach_list) or cheerleader_list```
 
 	- == operator
@@ -158,11 +166,13 @@ forloop.parentloop	|For nested loops, this is the loop surrounding the current o
 
 ### Filters
 - You can also use filters in the if expression.
+
 ```
 {% if messages|length >= 100 %}
    You have lots of messages today!
 {% endif %}
 ```
+
 ### Complex expressions
 - All of the above can be combined to form complex expressions.
 	- or
