@@ -434,10 +434,6 @@ which will cause your site to display an error page.
 - If you’d like to retrieve a URL without displaying it, 
 you can use a slightly different call:
 
-```
-{% url 'some-url-name' arg arg2 as the_url %}
-<a href="{{ the_url }}">I'm linking to {{ the_url }}</a>
-```
 
 ### verbatim
 - Stops the template engine from rendering the contents of this block tag.
