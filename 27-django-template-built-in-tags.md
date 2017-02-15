@@ -556,11 +556,11 @@ between the {% with %} and {% endwith %} tags.
 - If value is Joel\nis a slug, the output will be <p>Joel<br />is a slug</p>.
 
 ### linebreaksbr
-- Converts all newlines in a piece of plain text to HTML line breaks (<_br _/>)
+- Converts all newlines in a piece of plain text to HTML line breaks (<\br \/>)
 ```html
 {{ value|linebreaksbr }}
 ```
-- If value is Joel\nis a slug, the output will be Joel<_br _/>is a slug.
+- If value is Joel\nis a slug, the output will be Joel<br />is a slug
 
 ### ljust
 - Left-aligns the value in a field of a given width.
@@ -675,7 +675,6 @@ Joel
 is a
 slug
 ```
-
 ### static
 - To link to static files that are saved in ```STATIC_ROOT``` Django ships with a static template tag. If the ```django.contrib.staticfiles app``` is installed, 
 the tag will serve files using url() method of the storage specified by STATICFILES_STORAGE. For example:
