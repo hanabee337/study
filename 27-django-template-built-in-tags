@@ -1,23 +1,28 @@
 #  Built-in template tags and filters
 
 ### autoescape
-- Controls the current auto-escaping behavior. This tag takes either on or off as an argument and that determines whether auto-escaping is in effect inside the block. The block is closed with an endautoescape ending tag
-- When auto-escaping is in effect, all variable content has HTML escaping applied to it before placing the result into the output
+- Controls the current auto-escaping behavior. 
+- This tag takes either on or off as an argument and that determines whether auto-escaping is in effect inside the block. 
+- The block is closed with an endautoescape ending tag
+- When auto-escaping is in effect, all variable content has HTML escaping applied to it 
+before placing the result into the output
 
-```html
+```
 {% autoescape on %}
     {{ body }}
 {% endautoescape %}
 ```
 
 ### comment
-- Ignores everything between {% comment %} and {% endcomment %}.
+- Ignores everything between {% comment %} and {% endcomment %}
+
 ```
 <p>Rendered text with {{ pub_date|date:"c" }}</p>
 {% comment "Optional note" %}
     <p>Commented out text with {{ create_date|date:"c" }}</p>
 {% endcomment %}
 ```
+
 ### csrf_token
 - This tag is used for CSRF protection, as described in the documentation for [Cross Site Request Forgeries](https://docs.djangoproject.com/en/1.11/ref/csrf/)
 	
@@ -33,17 +38,19 @@
     </tr>
 {% endfor %}
 ```
- - In some cases you might want to refer to the current value of a cycle without advancing to the next value. 
- To do this, just give the {% cycle %} tag a name, using “as”, like this:
+- In some cases you might want to refer to the current value of a cycle without advancing to the next value. 
+To do this, just give the {% cycle %} tag a name, using “as”, like this:
+
 ```
 {% cycle 'row1' 'row2' as rowcolors %}
 ```
+
 ### ```extends```
- - Signals that this template extends a parent template. 
+- Signals that this template extends a parent template. 
  ```
 {% extends "base.html" %} (with quotes) 
  ```
- - uses the literal value "base.html" as the name of the parent template to extend.
+- uses the literal value "base.html" as the name of the parent template to extend.
 
 ### **```filter```**
 ```
@@ -192,8 +199,9 @@ forloop.parentloop	|For nested loops, this is the loop surrounding the current o
 	```
 	{% include "name_snippet.html" with person="Jane" greeting="Hello" %}
 	```
-- If you want to render the context only with the variables provided (or even no variables at all), 
-	use the only option. No other variables are available to the included template:
+- If you want to render the context only with the variables provided 
+(or even no variables at all), use the only option. 
+No other variables are available to the included template:
 	```
 	{% include "name_snippet.html" with greeting="Hi" only %}
 	```
@@ -204,7 +212,9 @@ forloop.parentloop	|For nested loops, this is the loop surrounding the current o
 	```
 	{% load somelibrary package.otherlibrary %}
 	```
-- You can also selectively load individual filters or tags from a library, using the from argument. In this example, the template tags/filters named foo and bar will be loaded from somelibrary:
+- You can also selectively load individual filters or tags from a library, using the from argument. 
+In this example, the template tags/filters named foo 
+and bar will be loaded from somelibrary:
 	```
 	{% load foo bar from somelibrary %}
 	```
@@ -323,6 +333,7 @@ cities = [
 ### **```resetcycle```**
 - Resets a previous cycle so that it restarts from its first item at its next encounter. 
 - Without arguments, {% resetcycle %} will reset the last {% cycle %} defined in the template.
+
 ```
 {% for coach in coach_list %}
     <h1>{{ coach.name }}</h1>
@@ -332,6 +343,7 @@ cities = [
     {% resetcycle %}
 {% endfor %}
 ```
+
 ```
 <h1>José Mourinho</h1>
 <p class="odd">Thibaut Courtois</p>
@@ -348,6 +360,7 @@ cities = [
 ###  spaceless
 - Removes whitespace between HTML tags.
 - This includes tab characters and newlines.
+
 ```
 {% spaceless %}
     <p>
@@ -381,22 +394,28 @@ matching a given view and optional parameters.
 ```
 {% url 'some-url-name' v1 v2 %}
 ```
-- Do not mix both positional and keyword syntax in a single call. All arguments required by the URLconf should be present.
+- Do not mix both positional and keyword syntax in a single call. 
+All arguments required by the URLconf should be present.
 
 - For example, suppose you have a view, app_views.client, 
 whose URLconf takes a client ID (here, client() is a method inside the views file app_views.py). 
 The URLconf line might look like this:
+
 ```
 ('^client/([0-9]+)/$', app_views.client, name='app-views-client')
 ```
-If this app’s URLconf is included into the project’s URLconf under a path such as this:
+
+- If this app’s URLconf is included into the project’s URLconf under a path such as this:
+
 ```
 ('^clients/', include('project_name.app_name.urls'))
 ```
-...then, in a template, you can create a link to this view like this:
+- ...then, in a template, you can create a link to this view like this:
+
 ```
 {% url 'app-views-client' client.id %}
 ```
+
 - The template tag will output the string /clients/client/123/.
 
 - Note that if the URL you’re reversing doesn’t exist, you’ll get an NoReverseMatch exception raised, 
@@ -404,6 +423,7 @@ which will cause your site to display an error page.
 
 - If you’d like to retrieve a URL without displaying it, 
 you can use a slightly different call:
+
 ```
 {% url 'some-url-name' arg arg2 as the_url %}
 <a href="{{ the_url }}">I'm linking to {{ the_url }}</a>
@@ -420,11 +440,13 @@ and then applies that ratio to a constant.
 - Caches a complex variable under a simpler name. 
 - This is useful when accessing an “expensive” method multiple times
 (e.g., one that hits the database)
+
 ```
 {% with total=business.employees.count %}
     {{ total }} employee{{ total|pluralize }}
 {% endwith %}
 ```
+
 - The populated variable (in the example above, total) is only available between the {% with %} and {% endwith %} tags.
 
 ## Built-in filter reference
@@ -438,14 +460,17 @@ and then applies that ratio to a constant.
 - Capitalizes the first character of the value
 ```{{ value|capfirst }}```
 - If value is "django", the output will be "Django".
+
 ### center
 - enters the value in a field of a given width.
 ```{{ value|center:"15" }}```
 - If value is "Django", the output will be "     Django    ".
+
 ### cut
 - Removes all values of arg from the given string
 ```{{ value|cut:" " }}```
 - If value is "String with spaces", the output will be "Stringwithspaces".
+
 ### date
 - Formats a date according to the given format.
 
@@ -468,10 +493,12 @@ and then applies that ratio to a constant.
 ```
 {{ value|divisibleby:"3" }}
 ```
+
 ### filesizeformat
 ```
 {{ value|filesizeformat }}
 ```
+
 ### first
 - Returns the first item in a list.
 ```
@@ -503,9 +530,9 @@ and then applies that ratio to a constant.
 - If value is Joel\nis a slug, the output will be <p>Joel<br />is a slug</p>.
 
 ### linebreaksbr
-- Converts all newlines in a piece of plain text to HTML line breaks (<br />).
+- Converts all newlines in a piece of plain text to HTML line breaks (<br /\>)
 ```{{ value|linebreaksbr }}```
-- If value is Joel\nis a slug, the output will be Joel<br />is a slug.
+- If value is Joel\nis a slug, the output will be Joel<br /\>is a slug.
 
 ### ljust
 - Left-aligns the value in a field of a given width.
@@ -516,7 +543,8 @@ and then applies that ratio to a constant.
 ```{{ value|lower }}```
 
 ### make_list
-- Returns the value turned into a list. For a string, it’s a list of characters. For an integer, the argument is cast into an unicode string before creating a list.
+- Returns the value turned into a list. For a string, it’s a list of characters. For an integer, 
+the argument is cast into an unicode string before creating a list.
 ```{{ value|make_list }}```
 
 ### random
@@ -528,16 +556,16 @@ and then applies that ratio to a constant.
 - Right-aligns the value in a field of a given width.
 ```{{ value|rjust:"10" }}```
 
-
 ### slice
 - Returns a slice of the list.
 ```{{ some_list|slice:":2" }}```
 - If some_list is ['a', 'b', 'c'], the output will be ['a', 'b'].
+
 ### striptags
 - Makes all possible efforts to strip all [X]HTML tags.
 ```{{ value|striptags }}```
 - If value is "<b>Joel</b> <button>is</button> a <span>slug</span>", 
-the output will be "Joel is a slug".
+- the output will be "Joel is a slug".
 
 ### title
 - Converts a string into titlecase by making words start with an uppercase character 
@@ -562,7 +590,7 @@ and the remaining characters lowercase.
 ### unordered_list
 - Recursively takes a self-nested list and returns 
 an HTML unordered list – WITHOUT opening and
-closing <ul> tags.
+closing <ul\> tags.
 
 ### upper
 - Converts a string into all uppercase.
@@ -594,7 +622,3 @@ the tag will serve files using url() method of the storage specified by STATICFI
 {% load static %}
 <img src="{% static "images/hi.jpg" %}" alt="Hi!" />
 ```
-
-
-
-
