@@ -47,9 +47,9 @@ To do this, just give the {% cycle %} tag a name, using “as”, like this:
 
 ### ```extends```
 - Signals that this template extends a parent template. 
- ```html
+```html
 {% extends "base.html" %} (with quotes) 
- ```
+```
 - uses the literal value "base.html" as the name of the parent template to extend.
 
 ### **```filter```**
@@ -144,27 +144,25 @@ forloop.parentloop	|For nested loops, this is the loop surrounding the current o
 ```
 
 - Use of actual parentheses in the if tag is invalid syntax. If you need them to indicate precedence, you should use nested if tags.
-
-```html
+```
 if (athlete_list and coach_list) or cheerleader_list
 ```
 
-	- == operator
-	- != operator
-	- < operator
-	- \> operator
-	- \<= operator
-	- \>= operator
-	- in operator
-	```html
-	{% if user in users %}
+- == operator
+- != operator
+- < operator
+- \> operator
+- \<= operator
+- \>= operator
+- in operator
+	```{% if user in users %}
   	If users is a QuerySet, this will appear if user is an
   	instance that belongs to the QuerySet.
 	{% endif %}
 	```
-	- not in operator
-	- is operator
-	- is not operator
+- not in operator
+- is operator
+- is not operator
 
 ### Filters
 - You can also use filters in the if expression.
@@ -183,59 +181,59 @@ if (athlete_list and coach_list) or cheerleader_list
 	- in
 	- ==, !=, <, >, <=, >=
 	
-	```html
-	{% if a == b or c == d and e %}
-	```
+```html
+{% if a == b or c == d and e %}
+```
 
 ### ifchanged
 - Check if a value has changed from the last iteration of a loop.
 - {% ifchanged %} block tag is used within a loop.
-		```html
-		{% for match in matches %}
-		    <div style="background-color:
-			{% ifchanged match.ballot_id %}
-			    {% cycle "red" "blue" %}
-			{% else %}
-			    gray
-			{% endifchanged %}
-		    ">{{ match }}</div>
-		{% endfor %}
-		```
+```html
+{% for match in matches %}
+<div style="background-color:
+{% ifchanged match.ballot_id %}
+	{% cycle "red" "blue" %}
+{% else %}
+	gray
+{% endifchanged %}
+{{ match }}</div>
+{% endfor %}
+```
 	
 ### include
 - Loads a template and renders it with the current context. This is a way of “including” other templates within a template.
-	```html
-	{% include "foo/bar.html" %}
-	```
+```html
+{% include "foo/bar.html" %}
+```
 - You can pass additional context to the template using keyword arguments:
-	```html
-	{% include "name_snippet.html" with person="Jane" greeting="Hello" %}
-	```
+```html
+{% include "name_snippet.html" with person="Jane" greeting="Hello" %}
+```
 - If you want to render the context only with the variables provided 
 (or even no variables at all), use the only option. 
 No other variables are available to the included template:
-	```html
-	{% include "name_snippet.html" with greeting="Hi" only %}
-	```
+```html
+{% include "name_snippet.html" with greeting="Hi" only %}
+```
 
 ### load
 - Loads a custom template tag set.
 - For example, the following template would load all the tags and filters registered in somelibrary and otherlibrary located in package package:
-	```html
-	{% load somelibrary package.otherlibrary %}
-	```
+```html
+{% load somelibrary package.otherlibrary %}
+```
 - You can also selectively load individual filters or tags from a library, using the from argument. 
 In this example, the template tags/filters named foo 
 and bar will be loaded from somelibrary:
-	```html
-	{% load foo bar from somelibrary %}
-	```
+```html
+{% load foo bar from somelibrary %}
+```
 
 ### lorem
 - Displays random “lorem ipsum” Latin text.
-	```html
-	{% lorem [count] [method] [random] %}
-	```
+```html
+{% lorem [count] [method] [random] %}
+```
 	
 |Argument|	Description|
 ---|---
@@ -245,9 +243,9 @@ random|	The word random, which if given, does not use the common paragraph (“L
 
 ### now
 - Displays the current date and/or time, using a format according to the given string
-	```html
-	It is {% now "jS F Y H:i" %}
-	```
+```html
+It is {% now "jS F Y H:i" %}
+```
 
 ### **```regroup```**
 - Regroups a list of alike objects by a common attribute.
@@ -380,7 +378,10 @@ cities = [
     </p>
 {% endspaceless %}
 ```
-```<p><a href="foo/">Foo</a></p>```
+
+```html
+<p><a href="foo/">Foo</a></p>
+```
 
 - Only space between tags is removed – not space between tags and text.
 
@@ -422,7 +423,7 @@ The URLconf line might look like this:
 ```html
 ('^clients/', include('project_name.app_name.urls'))
 ```
-- ...then, in a template, you can create a link to this view like this:
+- then, in a template, you can create a link to this view like this:
 
 ```html
 {% url 'app-views-client' client.id %}
@@ -436,6 +437,10 @@ which will cause your site to display an error page.
 - If you’d like to retrieve a URL without displaying it, 
 you can use a slightly different call:
 
+```
+{% url 'some-url-name' arg arg2 as the_url %}
+<a href="{{ the_url }}">I'm linking to {{ the_url }}</a>
+```
 
 ### verbatim
 - Stops the template engine from rendering the contents of this block tag.
@@ -455,28 +460,37 @@ and then applies that ratio to a constant.
 {% endwith %}
 ```
 
-- The populated variable (in the example above, total) is only available between the {% with %} and {% endwith %} tags.
+- The populated variable (in the example above, total) is only available 
+between the {% with %} and {% endwith %} tags.
 
 ## Built-in filter reference
 ### add
 - Adds the argument to the value.
-```html{{ value|add:"2" }}```
+```html
+{{ value|add:"2" }}
+```
 - If value is 4, then the output will be 6.
 
 ### addslashes
 ### capfirst
 - Capitalizes the first character of the value
-```html{{ value|capfirst }}```
+```html
+{{ value|capfirst }}
+```
 - If value is "django", the output will be "Django".
 
 ### center
 - enters the value in a field of a given width.
-```html{{ value|center:"15" }}```
+```html
+{{ value|center:"15" }}
+```
 - If value is "Django", the output will be "     Django    ".
 
 ### cut
 - Removes all values of arg from the given string
-```html{{ value|cut:" " }}```
+```html
+{{ value|cut:" " }}
+```
 - If value is "String with spaces", the output will be "Stringwithspaces".
 
 ### date
@@ -534,66 +548,94 @@ and then applies that ratio to a constant.
 - If value is ['a', 'b', 'c', 'd'] or "abcd", the output will be 4.
 
 ### linebreaks
-```html{{ value|linebreaks }}```
+```html
+{{ value|linebreaks }}
+```
 - If value is Joel\nis a slug, the output will be <p>Joel<br />is a slug</p>.
 
 ### linebreaksbr
 - Converts all newlines in a piece of plain text to HTML line breaks (<br /\>)
-```html{{ value|linebreaksbr }}```
+```html
+{{ value|linebreaksbr }}
+```
 - If value is Joel\nis a slug, the output will be Joel<br /\>is a slug.
 
 ### ljust
 - Left-aligns the value in a field of a given width.
-```html{{ value|ljust:"10" }}```
+```html
+{{ value|ljust:"10" }}
+```
 
 ### lower
 - Converts a string into all lowercase.
-```html{{ value|lower }}```
+```html
+{{ value|lower }}
+```
 
 ### make_list
 - Returns the value turned into a list. For a string, it’s a list of characters. For an integer, 
 the argument is cast into an unicode string before creating a list.
-```html{{ value|make_list }}```
+```html
+{{ value|make_list }}
+```
 
 ### random
 - Returns a random item from the given list.
-```html{{ value|random }}```
+```html
+{{ value|random }}
+```
 - If value is the list ['a', 'b', 'c', 'd'], the output could be "b".
 
 ### rjust
 - Right-aligns the value in a field of a given width.
-```html{{ value|rjust:"10" }}```
+```html
+{{ value|rjust:"10" }}
+```
 
 ### slice
 - Returns a slice of the list.
-```html{{ some_list|slice:":2" }}```
+```html
+{{ some_list|slice:":2" }}
+```
 - If some_list is ['a', 'b', 'c'], the output will be ['a', 'b'].
 
 ### striptags
 - Makes all possible efforts to strip all [X]HTML tags.
-```html{{ value|striptags }}```
+```html
+{{ value|striptags }}
+```
 - If value is "<b>Joel</b> <button>is</button> a <span>slug</span>", 
 - the output will be "Joel is a slug".
 
 ### title
 - Converts a string into titlecase by making words start with an uppercase character 
 and the remaining characters lowercase.
-```html{ value|title }}```
+```html
+{ value|title }}
+```
 
 ### truncatechars
 - Truncates a string if it is longer than the specified number of characters. 
 - Truncated strings will end with a translatable ellipsis sequence (”...”).
-```html{{ value|truncatechars:9 }}```
+```html
+{{ value|truncatechars:9 }}
+```
 
 ### truncatechars_html
 - Similar to truncatechars, except that it is aware of HTML tags.
-```html{{ value|truncatechars_html:9 }}```
+```html
+{{ value|truncatechars_html:9 }}
+```
 
 ### truncatewords
-```html{{ value|truncatewords:2 }}```
+```html
+{{ value|truncatewords:2 }}
+```
 
 ### truncatewords_html
-```html{{ value|truncatewords_html:2 }}```
+```html
+{{ value|truncatewords_html:2 }}
+```
 
 ### unordered_list
 - Recursively takes a self-nested list and returns 
@@ -602,27 +644,36 @@ closing <ul\> tags.
 
 ### upper
 - Converts a string into all uppercase.
-```html{{ value|upper }}```
+```html
+{{ value|upper }}
+```
 
 ### urlize
 - Converts URLs and email addresses in text into clickable links.
-```html{{ value|urlize }}```
+```html
+{{ value|urlize }}
+```
 
 ### wordcount
 - Returns the number of words.
-```html{{ value|wordcount }}```
+```html
+{{ value|wordcount }}
+```
 - If value is "Joel is a slug", the output will be 4.
 
 ### wordwrap
 - Wraps words at specified line length.
 - Argument: number of characters at which to wrap the text
-```html{{ value|wordwrap:5 }}```
+```html
+{{ value|wordwrap:5 }}
+```
 - If value is Joel is a slug, the output would be:
 ```html
 Joel
 is a
 slug
 ```
+
 ### static
 - To link to static files that are saved in ```STATIC_ROOT``` Django ships with a static template tag. If the ```django.contrib.staticfiles app``` is installed, 
 the tag will serve files using url() method of the storage specified by STATICFILES_STORAGE. For example:
