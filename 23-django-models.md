@@ -134,7 +134,7 @@ with the relationship between two models
 - Django allows you to specify the model that will be used to govern the many-to-many relationship. 
 You can then put ```extra fields``` on the ```intermediate model```. 
 The intermediate model is associated with the 
-ManyToManyField using the ```through``` argument 
+ManyToManyField using the [through](https://docs.djangoproject.com/en/1.10/topics/db/models/) argument 
 to point to the model that will act as an intermediary.
 ```python
 from django.db import models
@@ -167,9 +167,9 @@ This explicit declaration defines how the two models are related.
 	- Your intermediate model must contain one - and only one - foreign key to the source model (this would be Group in our example), 
 	or you must explicitly specify the foreign keys 
 	Django should use for the relationship 
-	using ManyToManyField.```through_fields```. 
+	using ManyToManyField. [through_fields](https://docs.djangoproject.com/en/1.10/ref/models/fields/#django.db.models.ManyToManyField.through_fields). 
 	If you have ```more than one foreign key``` and 
-	through_fields is not specified, a validation error will be raised. 
+	through_fields is not specified, a validation error will be raised.
 	A similar restriction applies to the foreign key to 
 	the target model (this would be Person in our example)
 	
@@ -178,7 +178,7 @@ This explicit declaration defines how the two models are related.
 	model, two foreign keys to the same model are 
 	permitted, but they will be treated as the two 
 	(different) sides of the many-to-many relationship. 
-	If there are ```more than two foreign keys``` though, 
+	If there are ```more than two foreign keys``` though,
 	you must also specify [through_fields](https://docs.djangoproject.com/en/1.10/ref/models/fields/#django.db.models.ManyToManyField.through_fields) as 
 	above, or a validation error will be raised.
 	- When defining a many-to-many relationship from 
