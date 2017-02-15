@@ -1,8 +1,8 @@
 # Built-in template tags and filters
 
 ### autoescape
-- Controls the current auto-escaping behavior. 
-- This tag takes either on or off as an argument and that determines whether auto-escaping is in effect inside the block. 
+- Controls the current auto-escaping behavior
+- This tag takes either on or off as an argument and that determines whether auto-escaping is in effect inside the block.
 - The block is closed with an endautoescape ending tag
 - When auto-escaping is in effect, all variable content has HTML escaping applied to it 
 before placing the result into the output
