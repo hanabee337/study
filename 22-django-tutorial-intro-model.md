@@ -288,7 +288,7 @@ for instance, User.map_set.all().
 - If you do specify, e.g. related_name=maps on the User model, 
 User.map_set will still work, but the User.maps.
 
-[related_name](http://stackoverflow.com/questions/2642613/what-
+	- [related_name](http://stackoverflow.com/questions/2642613/what-
 is-related-name-used-for-in-django)
 
 ### symmetrical
@@ -298,7 +298,8 @@ For example: If A is a friend of B, then B is a friend of A so we need
 two separate rows in the friends table where first one will indicate 
 the relation A -> B and second one is B -> A
 
-[symmetrical](http://stackoverflow.com/questions/36852324/in-
+	- [symmetrical](https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.ManyToManyField.symmetrical) 
+	- [symmetrical2](http://stackoverflow.com/questions/36852324/in-
 django-what-does-symmetrical-true-do) 
 
 ### through_field vs through
@@ -308,11 +309,62 @@ django-what-does-symmetrical-true-do)
 	- You can then put ```extra fields``` on the intermediate mode
 	- The most common use for this option is when 
 	you want ```to associate extra data``` with a many-to-many relationship
+	- [through](https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.ManyToManyField.through) 
+
+```python
+from django.db import models
+
+class Person(models.Model):
+    name = models.CharField(max_length=128)
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.name
+
+class Group(models.Model):
+    name = models.CharField(max_length=128)
+    members = models.ManyToManyField(Person, through='Membership')
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.name
+
+class Membership(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    date_joined = models.DateField()
+    invite_reason = models.CharField(max_length=64)
+```
 
 - ```through_field```
+	- Only used when a custom intermediary model is specified
 	- If Membership has two foreign keys to Person (person and inviter), which makes the relationship ambiguous and Django can’t know which one to use.
 	- In this case, you must ```explicitly specify which foreign keys``` Django should use using ```through_fields```
+	- [through_fields](https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.ManyToManyField.through_fields) 
 
+```python
+from django.db import models
+
+class Person(models.Model):
+    name = models.CharField(max_length=50)
+
+class Group(models.Model):
+    name = models.CharField(max_length=128)
+    members = models.ManyToManyField(
+        Person,
+        through='Membership',
+        through_fields=('group', 'person'),
+    )
+
+class Membership(models.Model):
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    inviter = models.ForeignKey(
+        Person,
+        on_delete=models.CASCADE,
+        related_name="membership_invites",
+    )
+    invite_reason = models.CharField(max_length=64)
+```
+	
 #### One-to-one relationships
 - This is most useful on the primary key of an object
 when that object “extends” another object in some way.(?)
@@ -346,7 +398,7 @@ not the model instances(?)
 
 ## Model method
 - model methods should act on a particular model instance
--  **```\_\_str\_\_()```**
+-  ```\_\_str\_\_()```
 - get_absolute_url() : 
 	- This tells Django how to calculate the URL for an object.
 	- Django uses this any time it needs to figure out a URL for an object.
