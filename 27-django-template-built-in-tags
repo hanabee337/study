@@ -26,7 +26,7 @@ before placing the result into the output
 ### csrf_token
 - This tag is used for CSRF protection, as described in the documentation for [Cross Site Request Forgeries](https://docs.djangoproject.com/en/1.11/ref/csrf/)
 	
-### **```cycle```**
+### cycle
 - Produces one of its arguments each time this tag is encountered.
 - The first argument is produced on the first encounter, the second argument on the second encounter, and so forth
 - Once all arguments are exhausted, the tag cycles to the first argument and produces it again.
@@ -45,14 +45,15 @@ To do this, just give the {% cycle %} tag a name, using “as”, like this:
 {% cycle 'row1' 'row2' as rowcolors %}
 ```
 
-### ```extends```
+### extends
 - Signals that this template extends a parent template. 
  ```
 {% extends "base.html" %} (with quotes) 
  ```
 - uses the literal value "base.html" as the name of the parent template to extend.
 
-### **```filter```**
+### filter
+
 ```
 {% filter force_escape|lower %}
     This text will be HTML-escaped, and will appear in all lowercase.
@@ -75,7 +76,7 @@ is eqivalnet to
 {% endif %}
 ```
 
-### **```for```**
+### for
 - Loops over each item in an array, making the item available in a context variable
 
 ```
@@ -118,7 +119,7 @@ forloop.parentloop	|For nested loops, this is the loop surrounding the current o
 </ul>
 ```
 
-### **```if```**
+### if
 - Boolean operators
 
 ```
@@ -247,7 +248,7 @@ random|	The word random, which if given, does not use the common paragraph (“L
 	It is {% now "jS F Y H:i" %}
 	```
 
-### **```regroup```**
+### regroup
 - Regroups a list of alike objects by a common attribute.
 - example
 ```
@@ -340,7 +341,7 @@ cities = [
 ### Grouping on other properties
 
 
-### **```resetcycle```**
+### resetcycle
 - Resets a previous cycle so that it restarts from its first item at its next encounter. 
 - Without arguments, {% resetcycle %} will reset the last {% cycle %} defined in the template.
 
@@ -382,7 +383,7 @@ cities = [
 
 - Only space between tags is removed – not space between tags and text.
 
-### **```templatetag```**
+### templatetag
 - to display one of the bits used in template tags, you must use the {% templatetag %} tag.
 
 Argument|	Outputs
@@ -434,6 +435,10 @@ which will cause your site to display an error page.
 - If you’d like to retrieve a URL without displaying it, 
 you can use a slightly different call:
 
+```
+{% url 'some-url-name' arg arg2 as the_url %}
+<a href="{{ the_url }}">I'm linking to {{ the_url }}</a>
+```
 
 ### verbatim
 - Stops the template engine from rendering the contents of this block tag.
