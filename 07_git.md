@@ -41,7 +41,7 @@ https://github.com/fastcampus-school/computer_basic_assignment_171q_web/tree/mas
 27. **```git pull origin {브랜치 이름}```** : 해당 브랜치를 pull 하는 명령어.  
 28. **```git revert {commit 번호}```**: 해당 커밋만 revert.  
 29. **```git diff --staged -M```** : 파일이 이동한 것을 감지하는 기능 
-30. **```git blam {파일명}```** : 특정 파일의 수정 이력 파악
+30. **```git blame {파일명}```** : 특정 파일의 수정 이력 파악
 
 #git 실습
 ### remote repository 만들고 local push하기
