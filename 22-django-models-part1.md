@@ -138,13 +138,76 @@ but each Car only has one Manufacturer
     on_delete=models.CASCADE)
     # ...
 
+#### ForeignKey &Recursive Relationship
+- You can also create [recursive relationship](https://docs.djangoproject.com/en/1.11/ref/models/fields/#recursive-relationships)  (an object with a many-to-one relationship to itself
+ - To create a recursive relationship – an object that has a many-to-one relationship with itself – use ```models.ForeignKey```(**```'self'```**, on_delete=models.CASCADE).
 - [Many-to-one relationship model example](https://docs.djangoproject.com/en/1.10/topics/db/examples/many_to_one/)
+
 - 실습
+```python
+In [1]: from person.models import Person
+In [2]: instructor = Person.objects.get(name='이한영')
+In [3]: p1 = Person.objects.get(name='최용일')
+In [4]: p2 = Person.objects.get(name='김정호')
+In [5]: p1.instructor = instructor
+In [6]: p2.instructor = instructor
+In [7]: p1.save()
+In [8]: p2.save()
+In [9]: p1.instructor
+Out[9]: <Person: 이한영>
+
+In [10]: p2.instructor
+Out[10]: <Person: 이한영>
+
+In [11]: instructor
+Out[11]: <Person: 이한영>
+
+- 강사가 학생을 역참조하고자 하는 경우 (클래스 소문자 + _set : person_set)
+In [12]: instructor.person_set.all()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-12-0adadd0a316b> in <module>()
+----> 1 instructor.person_set.all()
+
+AttributeError: 'Person' object has no attribute 'person_set'
+
+그런데, 여기서 에러가 발생했다. 
+이유는 코드에 related_name = 'student_set'으로 지정하였기 때문.
+related_name이 지정되어 있지 않았다면, (클래스 소문자 + _set)의 조합인 person_set으로 검색이 가능했을 것이다.
+만약, 외래키가 여러 개인 경우, related_name을 지정하지 않으면 모두 person_set이라는 동일 이름을 갖기 때문에, migrations시 충돌이 발생한다.
+
+In [13]: instructor.person-set
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-13-115492178986> in <module>()
+----> 1 instructor.person-set
+
+AttributeError: 'Person' object has no attribute 'person'
+
+In [14]: instructor.person_set
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-14-0bdcb0a5d095> in <module>()
+----> 1 instructor.person_set
+
+AttributeError: 'Person' object has no attribute 'person_set' : 코드 상에 related_name이 student_set으로 설정되어 있어서 안된 것임.
+
+In [15]: instructor.student_set 
+Out[15]: <django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager at 0x7fe30cb8ddd8>
+
+In [16]: instructor.student_set.all()
+Out[16]: <QuerySet [<Person: 최용일>, <Person: 김정호>]>
+```
+
+#### flat=True
+- [flat](https://docs.djangoproject.com/en/1.10/ref/models/querysets/)
+-  ```flat = True```로 하면, tutple이지만, 인자가 하나밖에 없는 경우, list로 뽑아올 수 있다.
+- If you only pass in a single field, you can also pass in the flat parameter. 
+- If True, this will mean the returned results are single values, rather than one-tuples.
 
 #### Many-to-many relationships
 - It doesn’t matter which model has the ManyToManyField, 
 but you should only put it in one of the models – not both.
-
 
 - 실습
 - shell에서 객체 생성, instance 받아오는 것들 익숙해지기.
@@ -154,7 +217,7 @@ a Topping can be on multiple pizzas and each Pizza has multiple toppings
 - ManyToMany 관계에서는 아무나 역참조가 되지만,
 포함관계에서 상위요소에 해당하는 클래스에 ManyToMany를 선언한다.
 
-```
+```python
 from django.db import models
 
 class Topping(models.Model):
@@ -170,7 +233,7 @@ class Pizza(models.Model):
 - ManyToMany Relationship
 
 >>> from pizza.models import Pizza, Topping
->>> cp = Pizza.objects.create(title='Cheese Pizza')
+>>> cp = Pizza.objects.create(title='Cheese Pizza') : create는 save한 결과까지 포함.
 >>> bp = Pizza.objects.create(title='Bulgogi Pizza')
 >>> pp = Pizza.objects.create(title='Pepproni Pizza')
 >>> Pizza.objects.all()
@@ -187,8 +250,8 @@ class Pizza(models.Model):
 >>> t_ham = Topping.objects.create(title = 'Ham')
 >>> Topping.objects.values_list('title', flat=True)
 <QuerySet ['Pimang', 'Cheese', 'Mushroom', 'Ham']>
->>> cp.toppins = (t_cheese, t_ham)
->>> bp.toppings = (t_cheese, t_mush, t_pimang)
+>>> cp.toppins = (t_cheese, t_ham) <- 한 개 add시, cp.toppings.add(t_ham) 표현도 가능.
+>>> bp.toppings = (t_cheese, t_mush, t_pimang) <- 여러 개 add시
 >>> pp.toppings = (t_cheese, t_pimang, t_mush, t_ham)
 >>> cp
 <Pizza: Cheese Pizza, (Toppings : )>
@@ -210,13 +273,13 @@ class Pizza(models.Model):
 ```
 
 - DB Browser SQLite3로 확인해보면,
-	- 피자(P) <-> 토핑(T)사이에 테이블이 있다. 이게 pizza_pizza_topping 이다. 
- DB Browser에서 DB 구조를 확인해 봤을 때.
-피자와 토핑사이에 있는 테이블(P-T테이블)에 피자 id를 올려,
-피자를 테이블에 올리고, 각각의 토핑도 P-T 테이블에 올려서,
-P-T 테이블에 있는 id에 딸린 topping들을 확인하는 것이 
+	- 피자(P) <-> 토핑(T)사이에 테이블이 있다. 이게 pizza_pizza_toppings 이다. 
+DB Browser에서 DB 구조를 확인해 봤을 때.
+피자와 토핑사이에 있는 테이블(P-T테이블)에 피자 id를 올려, 피자를 테이블에 올리고, 
+각각의 토핑도 P-T 테이블에 올려서, P-T 테이블에 있는 id에 딸린 topping들을 확인하는 것이
 ManyToMany 관계형이다.
-```
+
+```python
 (InteractiveConsole)
 > from person.models import User
 > u1= user.objects.create(name='bhj')
@@ -232,7 +295,7 @@ ManyToMany 관계형이다.
 - 위의 내용은 u1에서만 u2를 add했는데, 
 u2도 자동으로 u1을 friend로 추가가 되어 있다.
 
-```
+```python
 symmetrical=False, 이 설정을 해줘야 서로 following되는 걸 막을 수 있다.
 
 > u1=User.objects.create(name='Me')
@@ -301,6 +364,10 @@ the relation A -> B and second one is B -> A
 	- [symmetrical](https://docs.djangoproject.com/en/1.11/ref/models/fields/#django.db.models.ManyToManyField.symmetrical) 
 	- [symmetrical2](http://stackoverflow.com/questions/36852324/in-
 django-what-does-symmetrical-true-do) 
+
+- If you do ```not want symmetry in many-to-many relationships with self```, 
+```set symmetrical to False```. This will force Django to add the descriptor for the reverse relationship,
+allowing ManyToManyField relationships to be non-symmetrical.
 
 ### through_field vs through
 - ```through``` 

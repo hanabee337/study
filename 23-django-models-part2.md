@@ -100,6 +100,10 @@ class Car(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
     # ...
 ```
+#### ForeignKey &Recursive
+- You can also create [recursive relationship](https://docs.djangoproject.com/en/1.11/ref/models/fields/#recursive-relationships)  (an object with a many-to-one relationship to itself
+ - To create a recursive relationship – an object that has a many-to-one relationship with itself – use ```models.ForeignKey```(**```'self'```**, on_delete=models.CASCADE).
+
 
 ### 2. Many-to-many relationships
 - To define a many-to-many relationship, use ManyToManyField.
