@@ -112,25 +112,25 @@ $ pyenv local pip-test-env
 A) README 파일에다가 inform해주기.
 
 ### 5. virtualenv가 지워졌으므로 python 폴더용 가상환경 설정을 해주어야 함
-1. pyenv virtualenv <version> <env_name> 으로 가상환경생성
+1. `pyenv virtualenv <version> <env_name>` 으로 가상환경생성
 
 	- $ pyenv virtualenv 3.4.3 fc-python
 	- python 3.4.3 버전으로 fc-python이라고 하는 가상환경을 생성하겠다는 의미
 	
-2. 해당 폴더(projects/python)에서 pyenv local fc-python으로 가상환경 사용 설정
+2. 해당 폴더(projects/python)에서 `pyenv local fc-python`으로 가상환경 사용 설정
 	- 예) projects/python 에서
 	- $ pyenv local fc-python 
 	- 1번에서 만든 가상환경을 작업할 해당 폴더에서 local화 하겠다는 의미.
 	- local화란 1번에서 생성한 가상환경을 해당 폴더에만 적용시키겠다는 의미.
 	
-3. pyenv versions로 설정 적용되었는지 확인, pip list로 새 가상환경 상태인지 확인
+3. `pyenv versions`로 설정 적용되었는지 확인, pip list로 새 가상환경 상태인지 확인
 	- $ pyenv versions
 	- $ pip list
 	
-4. $ pip install -r requirements.txt.로 패키지 설치
+4. `$ pip install -r requirements.txt` 로 패키지 설치
 	- 생성한 가상환경에 맞는 패키지들을 설치하겠다는 의미
 	
-5. pyenv uninstall <가상 env_name>
+5. `pyenv uninstall <가상 env_name>`
 	- 예) $ pyenv uninstall closed_projects
 	- 그렇게 하면, 가상과 물리 모두 삭제가 됨
 	- 3.4.3/env/closed_project - 물리(?)
@@ -155,9 +155,6 @@ A) README 파일에다가 inform해주기.
 	- $ pip install lxml
 
 11. PyCharm에서 환경 설정을 해줘야 하는데, Ubuntu에서는 
-```
-`/home/<자기유저명>/.pyenv/versions/3.4.3/env/<가상환경이름>/bin/python`
-로 파이참에 프로젝트 인터프리터 설정해준다. 
-```
+`/home/<자기유저명>/.pyenv/versions/3.4.3/env/<가상환경이름>/bin/python`로 파이참에 프로젝트 인터프리터 설정해준다. 
 ![pycharm-virtualenv-path](imgs/pycharm-virtualenv-path.png  "pycharm-virtualenv-path")	
 	

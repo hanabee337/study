@@ -27,7 +27,7 @@ $ sudo apt-get install vim
 ```
 
 ### z-shell 변경
-<http://theyearlyprophet.com/love-your-terminal.html>
+[http://theyearlyprophet.com/love-your-terminal.html](http://theyearlyprophet.com/love-your-terminal.html) 
 ```
 bash와 비슷하게 동작하는 셸로, 사용성이 좋다고 함.  
 ```
@@ -119,6 +119,4 @@ $ pip install ipython
 
 
 ### 실습 관련 내용은 17-pyenv-virtualenv.md 참조바람
-```html
-<https://github.com/hanabee337/study/blob/master/17-pyenv-virtualenv.md>
-```
+[https://github.com/hanabee337/study/blob/master/17-pyenv-virtualenv.md](https://github.com/hanabee337/study/blob/master/17-pyenv-virtualenv.md)
