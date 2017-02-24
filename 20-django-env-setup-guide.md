@@ -5,14 +5,14 @@
 4. 장고 설치
 5. ipython 설치
 6. django_extension 설치
-7. requirement.txt. 저장
+7. requirement.txt. 저장(pip freeze > requirement.txt)
 8. django-admin startproject mysite로 프로젝트 생성
 9. 장고 프로젝트 컨테이너 폴더 이름 django_app으로 변경
 10. git 저장소 초기화
 11. gitignore 작성(python, pycharm, django 등등)
 12. git add -A후, git status로 잘 작동하는지 확인
 13. 문제 없으면, 첫 commit push
-14. pycharm interpreter 설정
+14. pycharm interpreter 설정(설정한 가상환경 path)
 15. shell_plus 실행
 16. 추천 
 	- .gitignore 파일에 .idea/ 도 추가
