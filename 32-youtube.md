@@ -1,3 +1,12 @@
+### H/W : 2017.02.20
+0. 유저 모델에 img_profile 필드 추가, migrations
+1. change_profile_image.html 파일 작성
+2. ProfileImageForm 작성
+3. 해당 Form 템플릿에 렌더링
+4. request.method == 'POST' 일 때, 
+request.FILES의 값을 이용해서 request.user의 img_profile을 변결, 저장
+5. 처리 완료 후, member:profile로 이동
+6. progile.tml에서 user의 프로필 이미지를 img태그를 사용해서 보여줌. {{ MEDIA_URL }}을 사용함.
 
 ### H/W : 2017.02.21 
 1. video app을 생성하고
@@ -6,7 +15,6 @@
 4. 위 View를 나타낼 수 있는 Template 구현
 5. View와 Template연결
 6. 실행해 보기
-
 
 ### 실습 내용 -2017.02.22 
 ### AbstractUser를 상속받아 CustomUser구현
