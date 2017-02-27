@@ -124,8 +124,21 @@ class BookmarkVideos(models.Model):
 
 - 그리고, 아까 설정했었던 DB 테이블을 삭제
 ```python
-    class Meta:
-        db_table = 'member_myuser_bookmark_videos'
+class MyUser(AbstractUser):
+    bookmark_videos = models.ManyToManyField(
+        'video.Video',
+        blank=True,
+        through='BookmarkVideos',
+    )
+
+# 중간자 모델
+class BookmarkVideos(models.Model):
+    myuser = models.ForeignKey(settings.AUTH_USER_MODEL)
+    video = models.ForeignKey('video.Video')
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    # class Meta:
+    #     db_table = 'member_myuser_bookmark_videos'
 ```
 - 그리고, migrations   
 ![](imgs/rename-table.png)  
