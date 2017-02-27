@@ -123,7 +123,7 @@ class BookmarkVideos(models.Model):
 - 기존에 있던 데이터들에는 timezone.now 했던 시간들이 입력되어 있다.
 
 - 그리고, 아까 설정했었던 DB 테이블을 삭제
-```
+```python
     class Meta:
         db_table = 'member_myuser_bookmark_videos'
 ```
