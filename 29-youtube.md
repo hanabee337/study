@@ -10,14 +10,15 @@
 3. 상단 왼쪽 Google APIs이미지 누르고
 	- 라이브러리를 선택
 	- **YouTube Data API** 선택
-	![YouTube Data API ](imgs/youtube-data-api.png)  
+	![YouTube Data API ](imgs/youtube-data-api.png)
+	
 	- 사용설정 클릭  
 	![](imgs/youtube-project-.png) 
 	
 4. 사용자 인증 정보 작성
 	- 좌측 **사용자 인증 정보** 클릭
 	- 사용자 인증 정보 만들기 -> API 키 선택
-	- 생성된 API키 확인(보안상 밑의 부분은 안보임)  
+	- 생성된 API키 확인(보안상 밑의 부분은 안보임)
 	![](imgs/youtube-user-authentification.png)  
 
 5. 그 다음 클라이언트 라이브러리로 이동
