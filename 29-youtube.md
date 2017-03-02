@@ -11,13 +11,13 @@
 	- 라이브러리를 선택
 	- **YouTube Data API** 선택
 	![YouTube Data API ](imgs/youtube-data-api.png)  
-	- 사용설정 클릭
+	- 사용설정 클릭  
 	![](imgs/youtube-project-.png) 
 	
 4. 사용자 인증 정보 작성
 	- 좌측 **사용자 인증 정보** 클릭
 	- 사용자 인증 정보 만들기 -> API 키 선택
-	- 생성된 API키 확인(보안상 밑의 부분은 안보임)
+	- 생성된 API키 확인(보안상 밑의 부분은 안보임)  
 	![](imgs/youtube-user-authentification.png)  
 
 5. 그 다음 클라이언트 라이브러리로 이동
@@ -33,16 +33,15 @@
 
 3. 가상환경 설정하고 하기 패키지 설치
 	- 이것을 설치해야 json이 지원이 되는 듯
-```python pip install --upgrade google-api-python-client
-``` 
+```python pip install --upgrade google-api-python-client``` 
 
 4. 그리고, API Key값 설정
 	- 하기 그림과 같이 django_app과 동일 level에서 **.conf 폴더** 생성
-	- 파일 이름은 **settings_local.json**
+	- 파일 이름은 **settings_local.json**  
 	![](imgs/youtube-apikey-setting.png)  
 
 5. 우리가 할려는 것은 검색리스트를 만드는 것. 
-	1. 이와 관련하여 ['Search: list'](https://developers.google.com/youtube/v3/docs/search/list)문서 참조 및
+	1. 이와 관련하여 ['Search: list'](https://developers.google.com/youtube/v3/docs/search/list)문서 참조 및  
 	![](imgs/youtube-data-api-search-list.png)  
 
 	2. 하기 **API 요청법 파악**의 2번 참조
@@ -56,7 +55,7 @@
 	- YouTube Data 
 
 2. [Youtube Search API Test](https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.search.list)
-	- 여기서는 임시 테스트를 해보는 곳.
+	- 여기서는 임시 테스트를 해보는 곳.  
 	![ ](imgs/youtube-search-list-explorer.png)  
 	
 	- 하기 그림의 "Execute withoug OAuth"를 클릭 
@@ -69,7 +68,7 @@
 	- 우선, 하기 그림처럼 좌측 상단의 **앱**을 선택, **postman** 클릭
 	![](imgs/google-postman.png) 
 	
-	 - **API 요청법 파악 2번**이나 **Search: list**문서에 나온 GET HTTP url을 하기 그림과 같이 GET 오른쪽란에 입력 
+	- **API 요청법 파악 2번**이나 **Search: list**문서에 나온 GET HTTP url을 하기 그림과 같이 GET 오른쪽란에 입력 
 	 ![](imgs/youtube-postman-url.png) 
 	 
 	- 그 다음, 입력한 url 오른쪽의 Params 클릭하여 key와 value들을 입력.
