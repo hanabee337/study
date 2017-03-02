@@ -1,6 +1,6 @@
 # YouTube App 만들기
 ### API Key 실습 - 2017.02.21
-1. .conf폴더의 settings_local.json을 읽어온다
+1. .conf폴더의 settings_local.json을 읽어온다  
 ![](imgs/youtube-apikey-setting.png)  
 
 2. 해당 내용을 json.loads()를 이용해 str -> dict형태로 변환
@@ -45,7 +45,7 @@ with open(file_path, 'r') as f:
 print(config_str)
 print(type(config_str))
 ```
-- print 결과
+- print 결과  
 ![](imgs/youtube-json.png)  
 
 - 즉, 출력된 결과는 JSON형태의 문자열이란 의미.
@@ -59,7 +59,7 @@ print(type(config_str))
 > youtube_api_key = config['youtube']['API_KEY']
 > print('youtube_api_key : %s' % youtube_api_key)
 ```
-- print 결과
+- print 결과  
 ![](imgs/youtube-json-loads.png)  
 
 - 위의 JSON형태의 문자열을 JSON 내부 라이브러리(loads)를 통해, 파이썬 객체(dict 형태)로 변환시켜준다.
