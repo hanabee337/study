@@ -10,11 +10,11 @@
 3. 상단 왼쪽 Google APIs이미지 누르고
 	- 라이브러리를 선택
 	- **YouTube Data API** 선택
-	![](imgs/youtube-data-api.png)
-	
-	- 사용설정 클릭  
-	![](imgs/youtube-project-.png) 
-	
+	![](imgs/youtube-data-api.png)  
+
+	- 사용설정 클릭
+	![](imgs/youtube-project-.png)   
+
 4. 사용자 인증 정보 작성
 	- 좌측 **사용자 인증 정보** 클릭
 	- 사용자 인증 정보 만들기 -> API 키 선택
