@@ -10,7 +10,7 @@
 3. 상단 왼쪽 Google APIs이미지 누르고
 	- 라이브러리를 선택
 	- **YouTube Data API** 선택
-	![YouTube Data API ](imgs/youtube-data-api.png)
+	![](imgs/youtube-data-api.png)
 	
 	- 사용설정 클릭  
 	![](imgs/youtube-project-.png) 
