@@ -10,8 +10,8 @@
 	- [액세스 토큰 및 로그인 상태 저장](https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow#token)  
 	- [사용자 로그아웃 유도](https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow#)  
 
-#### 1. 로그인 상태 확인
-#### 2. 사용자 로그인 유도
+## 1. 로그인 상태 확인
+## 2. 사용자 로그인 유도
 - **로그인 대화 상자 호출 및 리디렉션 URL 설정**
 앱에서 로그인 대화 상자를 표시할 엔드포인트로 리디렉션을 시작해야 합니다.  
 
@@ -57,7 +57,7 @@
 	그 창에서 로그인을 했을 때, 원래 로그인하려고 했었던 사이트에다 정보를 제공해줘야 하는데, 그 때 ```정보를 받을 url```을 ```redirect uri```에 적어준다. 우리가 하기와 같이 임의로 url을 'localhost의 member/login/facebook/' 으로 정하였다.(코드 참조. 나중에 127.0.0.1은 localhost로 변경됨)
 	![](imgs/facebook-redirect-uri.png)   
 
-#### 3. ID 확인
+## 3. ID 확인
 ![](imgs/facebook-gitlog-login_facebook.png)  
 
 - 위의 그림과 같이 commit들을 작업하였으면, 기본 template이 만들어 졌을 것이다. 
@@ -97,7 +97,7 @@
 
 ![](imgs/facebook-request-access-token-seccess.png)  
 
-#### 4. 액세스 토큰 검사
+## 4. 액세스 토큰 검사
 - [액세스 토큰](https://developers.facebook.com/docs/facebook-login/access-tokens/) 문서 참조
 - **액세스 토큰 생성**
 	1. ```사용자 액세스 토큰```
@@ -167,7 +167,7 @@ def login_facebook(request):
 
 	![](imgs/facebook-debig-token-response.png)  
 
-#### 현재까지의 내용 정리
+## 5.현재까지의 내용 정리
 ![](imgs/facebook-login-redirect-url.png)  
 
 - 우리는 login.html template에서 a tag를 이용하여 상기 url로 이동하였다. 페이스북 입장에서는 로그인 대화 상자로 이동하고, 이동한 다음에는 다시 돌아올 url을 입력하라는 의미. 
@@ -235,7 +235,7 @@ def login_facebook(request):
 ```
 ![](imgs/facebook-access-token-inspect.png)  
 
-#### Custom Authentification Backends
+## 6. Custom Authentification Backends
 - 하기 그림과 같은 정보들을 가져올 수 있으므로, 해당 id값을 가지고 user를 만들어 줄 수 있는데, 페이스북에서는 로그인시 패스워드를 따로 물어보지 않음. user name(user id)만 존재하면 됨. 
 - 그러나, 인증 시스템에서는 반드시 패스워드가 8자 이상이 있어야 한다. 그래서, ```Custom Authentification Backends```를 만들어야 한다.  
 
@@ -303,7 +303,7 @@ def login_facebook(request):
 	
 	![](imgs/facebook-graph-api-user-id.png)  
 
-#### User Profile Image Upload
+## 7. User Profile Image Upload
 - member/views.py의 login_facebook에서 로그인 요청을 하게되면,
 ```python
         # 페이스북 유저 ID만으로 인증
@@ -400,7 +400,7 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
 
-#### Template에 img tag 추가 후, 이미지 안나오는 문제
+## 8. Template에 img tag 추가 후, 이미지 안나오는 문제
 - 페이스북으로 로그인한 후, template코드에 img tag를 하기 코드처럼 추가하였으나, 이미지 안나옴. why(?)
 
 ```html
