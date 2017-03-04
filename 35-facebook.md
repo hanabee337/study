@@ -101,8 +101,8 @@
 - [액세스 토큰](https://developers.facebook.com/docs/facebook-login/access-tokens/) 문서 참조
 - **액세스 토큰 생성**
 	1. ```사용자 액세스 토큰```
-		- 상기 코드에서 받아온 ```ACCESS_TOKEN```이 사용자 액세스 토큰
-	2. ```앱 액세스 토큰```
+		- 상기 코드에서 받아온 ```ACCESS_TOKEN```이 사용자 액세스 토큰(하기에선 USER_ACCESS_TOKEN으로 rename됨)
+	2. ```앱 액세스 토큰```(APP_ACCESS_TOKEN)
 		- 우리가 페이스북에서 만든 앱(하기 그림에 있는 앱)에 대한 토큰
 		![](imgs/facebook-app.png)  
 
@@ -114,8 +114,8 @@
 	- 앱 ID와 앱 시크릿 코드를 알면 이 앱의 소유주일 것이다라는 전제하에 두 개를 결합하여 만든 토큰이 ```앱 액세스 토큰```  
 	![](imgs/facebook-access-token-inspect.png)  
 
-	- 상기 그림에서 ```input-token```에는 우리가 받은 ```ACCESS_TOKEN```을 입력한다.
-	- 그리고, ```access_token```에는 우리의 ```앱 액세스 토큰```을 입력하면 된다.
+	- 상기 그림에서 ```input-token```에는 우리가 받은 ```ACCESS_TOKEN```(사용자 액세스 토큰)을 입력한다.
+	- 그리고, ```access_token```에는 우리의 ```앱 액세스 토큰```(APP_ACCESS_TOKEN)을 입력하면 된다.
 	- 그러면, 이 ```앱 액세스 토큰```은 어떻게 만들면 되냐하면, 하기와 같이 앱 ID와 앱 시크릿 코드를 이용하면 된다. 
 	단, 시크릿 코드가 들어가기 때문에 client단에선 사용불가. 서버단에서만 사용가능.  
 	![](imgs/facebook-app-access-token.png)  
@@ -302,4 +302,4 @@ def login_facebook(request):
 	![](imgs/facebook-app-user-id.png)  
 	
 	![](imgs/facebook-graph-api-user-id.png)  
-	
+
