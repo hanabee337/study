@@ -71,7 +71,7 @@
 	1. [https://developers.facebook.com/](https://developers.facebook.com/) 로 접속
 	2. 접속 후, 우측 상단의 ```내 앱```에서 ```자기 아이디``` 클릭
 	3. 그러면, 아까 ```앱 ID```와 ```앱 secret_code```정보가 있는 곳으로 이동.
-	4. 거기서 좌측 **설정** 클릭한 후, ```앱 도메인```과 ```사이트 URL```에 각각 ```http://localhost:8000```이라고 입력 후, ```변경 내용 저장``` 버튼 클릭
+	4. 거기서 좌측 **설정** 클릭한 후, ```앱 도메인```과 ```사이트 URL```에 각각 ```http://localhost:8000```이라고 입력 후, ```변경 내용 저장``` 버튼 클릭  
 	![](imgs/facebook-site-url.png)   
 	
 	5. 그리고, login.html의 redirect uri도 localhost로 변경
