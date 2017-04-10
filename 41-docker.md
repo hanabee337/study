@@ -194,11 +194,11 @@ docker rmi -f <IAMGE ID>
 	```
 	docker run -p 4567:8080 eb
 	```
-- 4567은 local 포트(브라우저에서 사용할 포트와 동일한 값이면 됨)
-- 8080은 `Dockerfile`파일에서 설정한 값으로 맞춰준다. docker 포트.
+- 4567은 `local 포트`(브라우저에서 사용할 포트와 동일한 값이면 됨)
+- 8080은 `Dockerfile`파일에서 설정한 값으로 맞춰준다. `docker 포트`
 
 6. 결과가 다음그림과 같이 나왔다.
-![](imgs/docker-localhost-connet.png)  
+	![](imgs/docker-localhost-connet.png)  
 
 **위 결과에 대한 전제 조건** 
 	1. settings.py에서 DEBUG=True
@@ -212,7 +212,7 @@ docker rmi -f <IAMGE ID>
 3. docker run --rm -it eb
 ```
 - 3번의 경우는 실제 브라우저상에선 연결되지 않음.
-![](imgs/docker-run-tests.png)  
+	![](imgs/docker-run-tests.png)  
 
 여기까지가 170310 | Docker 2 강의
 
@@ -549,13 +549,84 @@ CMD         supervisord -n
  
 - 지금까지의 docker 이미지는 내 로컬 pc에 가상 환경에 저장되어 있으며, localhost로만 연결해서 테스트 하였다.
 - 이제, docker 이미지를  EB에 올려 서버를 구동시켜 보자.
+- docker 이미지를 이용해서 ec2로 배포할 수 있지만, 지금은 AWS EB에 올리는 것을 해보겠다.
 
 - elastic beanstalk 참고 문서
 	- [Deploying Elastic Beanstalk Applications from Docker Containers](http://docs.aws.amazon.com/ko_kr/elasticbeanstalk/latest/dg/create_deploy_docker.html)
 	- [Getting Started Using Elastic Beanstalk](http://docs.aws.amazon.com/ko_kr/elasticbeanstalk/latest/dg/GettingStarted.html)
  
  
+###  AWS EB CLI(command line interface)
+- awsebcli를 설치한다. 
+ `pip install awsebcli`
+ - 그 다음, `eb init` 이라고 입력한다.
+	![](imgs/eb-init.png) 
+	
+- 10번 `ap-northeast-2`를 선택
+- 어?..그런데, 다음과 같은 에러가 발생하였다. 왜 그럴까?..
+	![](imgs/eb-init-2.png) 
+- elastic beanstalk에 대한 권한을 user한테 주지 않아서 당연히 에러가 나는 거라고 함.
+
+- 근데, 나는 기존 수업시간에 한 번 만들었었는데, 하기처럼 aws access key가 안맞는지 에러가 난다. 왜 그런지...
+	![](imgs/eb-init-error.png) 
+
+- 권한을 주기 위해, `AWS IAM`으로 진입
+	![](imgs/aws-iam-for-eb.png) 
+
+- `User`항목 클릭하여 해당 user로 진입
+	![](imgs/aws-iam-users-permissions.png) 
+
+- 여기서 `Add permission` 버튼 클릭한 다음, `Attach exsiting policies directly` 선택하고, 검색 창에 `elasticbeanstalk` 이라고 검색한다.
+- 그런 다음, `AWSElasticBeanstalkFullAccess`을 선택
+	![](imgs/aws-iam-elasticbeanstalk-access.png) 
+
+- 최종 permission들은 다음과 같이 3개가 될 것이다.
+	![](imgs/aws-eb-permission-add.png) 
+
+- 그래도, 나는 에러가 계속 발생함. `aws-access-id`와 `aws-secret-key`가 안맞는다고 함.
+	![](imgs/aws-eb-error2.png)
+
+- 이전에 AWS로부터 다운받은 `credentials.crv` 파일에서 `aws-access-id` 와 `aws-secret-key` 입력. 
+- `credentials.crv` 파일은 폴더 `.aws` 에서 저장하여 관리하고 있다.
+
+- 그리고, 추가 항목 입력하면, 기본 세팅 완료
+	![](imgs/aws-eb-init-settings.png)
+
+- 세팅이 완료되면, 방금 설정한 세팅들이 폴더 `.elasticbeanstalk` 밑에 파일에 생성/저장되어 있는 것을 볼 수 있다.
+	![](imgs/elasticbeanstalk-file.png) 
+
+- 만약 문제 발생시, `.aws` 폴더 밑에 `credential`과 `config` 파일을 확인해볼 것.
+
+- [Getting Started Using Elastic Beanstalk](http://docs.aws.amazon.com/ko_kr/elasticbeanstalk/latest/dg/GettingStarted.html#GettingStarted.Walkthrough.CreateApp)
  
- 
-elastic beanstalk에서 docker로 진입
+- [The Elastic Beanstalk Command Line Interface (EB CLI)](http://docs.aws.amazon.com/ko_kr/elasticbeanstalk/latest/dg/eb-cli3.html)
+
+- [Managing Elastic Beanstalk Environments with the EB CLI](http://docs.aws.amazon.com/ko_kr/elasticbeanstalk/latest/dg/eb-cli3-getting-started.html)
+
+- `eb init`이 완료되면, `eb create`를 한 다음, 그림과 같이 진행하면 된다.
+	![](imgs/eb-create-process.png)
+
+- 진행이 완료되면, `AWS Elastic Beanstalk`로 이동
+	- 성공해야 되는데...실패함.
+	![](imgs/eb-create-fail.png)
+	
+	![](imgs/eb-create-success.png)
+	
+	![](imgs/eb-create-success-1.png)
+	
+- `Dockerfile.aws.json` 파일 생성.
+	- 우리 docker 파일에 의해 생성된 container에 대해 AWS에서 어떤 식으로 사용할 건지에 대한 설정을 하고자 한다.
+
+- 완료되었으면, git commit 완료하고, `eb deploy`를 한다.
+	- `Dockerfile.aws.json`에서 설정한 path인 `/var/app/current/django_app`으로 deploy하는 것.
+
+- `eb ssh`라고 입력하면, 현재 돌아가고 있는 `elastic beanstalk instance`에 들어 갈 수 있다.
+	![](imgs/eb-ssh-1.png)
+
+	![](imgs/eb-ssh-2.png)
+
+- 위 그림과 같이 `elastic beanstalk instance`로 들어온 다음에, 하기와 같은 command를 내리면, `elastic beanstalk`에서 `docker로 진입`할 수 있다.
+```
 sudo docker exec -it `sudo docker ps --no-trunc -q | head -n 1` /bin/bash
+```
+![](imgs/eb-docker.png) 
