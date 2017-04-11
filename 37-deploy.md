@@ -322,7 +322,7 @@ sudo vi /etc/uwsgi/sites/app.ini
 ```
 
 - 생성된 폴더 및 파일 위치
-![](images/uwsgi-app-ini.png) 
+	![](imags/uwsgi-app-ini.png) 
 
 - 참고 링크
 [uWSGI: 우분투 + 장고 + Nginx](http://brownbears.tistory.com/16) 
