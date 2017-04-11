@@ -1,5 +1,7 @@
 # Migrations 오류 발생시,
 
+- 문제 시나리오) db를 직접 건드려서, db의 table을 삭제를 해버렸다. 로컬에서 makemigrations을 해도, db에 table이 생성되지 않는다. 그럴 경우, 다음과 같이 작업해서 해결
+
 ![](imgs/zero-fake-1.png) 
 
 ![](imgs/zero-fake-2.png)
