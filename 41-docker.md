@@ -630,3 +630,6 @@ CMD         supervisord -n
 sudo docker exec -it `sudo docker ps --no-trunc -q | head -n 1` /bin/bash
 ```
 ![](imgs/eb-docker.png) 
+
+- 
+- 마지막으로 AWS Security Group으로 가서 RDS Security Group에서 aws security group을 등록을 해줘야 EB가 RDS DB 연동을 할 수가 있다.(예전에 EC2 security group을 RDS security group에 등록을 해준 것과 같은 이치)
