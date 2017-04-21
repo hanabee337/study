@@ -225,6 +225,7 @@ docker rmi -f <IAMGE ID>
 	
 2. _Dockerfile_base 파일을 하기와 같이 작성하고, docker 이미지(eb-base) build
 	![](imgs/dockerfile_base-1.png)
+	
 	```
 	로컬 PC에서
 	(deezer_env) ❯ docker build . -t eb-base -f _Dockerfile_base
@@ -251,16 +252,19 @@ root@8f9466775c75:/srv/app# uwsgi --http :8080 --chdir /srv/app/django_app -w co
 
 (여기서 config는 deploy_eb_docker 프로젝트의 프로젝트 명: /home/hanabee2/projects/django/deploy_eb_docker/django_app/config)
 ```
+
 ![](imgs/docker-run-1.png) 
 
 5. 서버를 킨 다음에, local 포트 4040 포트로 열면, 브라우저에서도 하기 그림과 같이  localhost:4040으로 접속하면 연결이 될 것이다.
  	- 안됐다. Internal Server Error 발생
+ 	
  	![](imgs/internal-server-error.png) 
 
 	- 원인을 찾아보니, 하기 그림과 같이 import 에러가 났다. pip 패키지가 반영이 안되어 있어 그런 것. 그래서, Dockerfile에서 pip3 install -r requirementes.txt 주석 해제하고, 다시 docker 이미지(eb) build
 	![](imgs/uwsgi-run-error.png) 
 
 	- 3, 4번 과정 다시 반복하였더니, 위의 그림과 같은 module import 에러 해결되었고, 브라우저에서 localhost:4040으로 정상연결 확인.
+	
 	![](imgs/uwsgi-run-ok-on-docker.png) 
 
 6. 하기와 같이 입력을 하고, 브라우저상에서 정상 연결 다시 확인
@@ -287,6 +291,7 @@ root@980bafb4ba6c:/tmp# cat uwsgi.log
 
 # 2017.03.10 Docker4(docker에 적용할 uwsgi 세팅, nginx.conf, supervisor)
 - 자, 이번엔 `nginx 세팅`을 해보자. `ubuntu 서버`에 있는 `nginx.conf` 파일을 복사해오자. 위치는 `/etc/nginx/nginx.conf`
+
 ![](imgs/nginx-conf.png) 
 
 ```
@@ -447,9 +452,10 @@ root@277ba9cb4569:/srv/app# uwsgi --ini /etc/uwsgi/sites/app.ini #3
 
 - \#2는 nginx 실행
 - \#3을 수행하면, 로컬 브라우저에서 localhost:5050으로 접속이 가능하게 됨.
+
 ![](imgs/docker-eb.png) 
 
-### 연결 Flow
+## 연결 Flow
 `localhost:5050 포트로 접속 -> docker 4040 포트로 연결 -> 연결된 포트로 nginx가 연결 요청을 받음 -> nginx가 app.sock을 통해 uwsgi에 요청 -> 요청을 받은 uwsgi가 django app 구동`
 
 - 그런데, nginx나 uwsgi가 어떤 오류로 인해서 죽었다. 그러면, 서버가 살아있어도 정상동작이 불가함. 이들을 관리하기 위해 `supervisor`라는 것을 사용한다.
@@ -509,7 +515,9 @@ root@277ba9cb4569:/srv/app# uwsgi --ini /etc/uwsgi/sites/app.ini #3
 	`docker run --rm -it -p 5050:4040 eb`
 		
 	9. 정상적으로 동작한다면, 아래 그림과 같은 부분에서 프린트 문이 멈춰져 있어야 한다.
+	
 	![](imgs/supervisor-nginx-daemon-off.png) 
+	
 		- 그림의 내용대로 supervisor가 실행된 다음에, nginx와 uwsgi를 만들고, success되서 실행되고 있고, supervisor는 running state 상태이므로, 그 이후에 아무 일도 안일어나므로, 프린트 문은 멈쳐져 있어야 한다. 
 		- 근데, 만약 여기서, nginx나 uwsgi가 죽는 상황이 발생하면, supervisor가 다시 살려준다.
 		- 이 상태가 되어야 한다. 이 상태에서 외부에서 5050으로 접속했을 때, 사이트가 아까처럼 계속 잘 나와야 한다.
@@ -556,7 +564,7 @@ CMD         supervisord -n
 	- [Getting Started Using Elastic Beanstalk](http://docs.aws.amazon.com/ko_kr/elasticbeanstalk/latest/dg/GettingStarted.html)
  
  
-###  AWS EB CLI(command line interface)
+##  AWS EB CLI(command line interface)
 - awsebcli를 설치한다. 
  `pip install awsebcli`
  - 그 다음, `eb init` 이라고 입력한다.
@@ -629,9 +637,10 @@ CMD         supervisord -n
 ```
 sudo docker exec -it `sudo docker ps --no-trunc -q | head -n 1` /bin/bash
 ```
+
 ![](imgs/eb-docker.png) 
 
-- 
-- 마지막으로 AWS Security Group으로 가서 RDS Security Group에서 aws security group을 등록을 해줘야 EB가 RDS DB 연동을 할 수가 있다.(예전에 EC2 security group을 RDS security group에 등록을 해준 것과 같은 이치)
+- 마지막으로 AWS Security Group으로 가서 RDS Security Group에서 aws security group을 등록을 해줘야 EB가 RDS DB 연동을 할 수가 있다.
+(예전에 EC2 security group을 RDS security group에 등록을 해준 것과 같은 이유)
 
 	![](imgs/eb-security-group-register-to-rds.png)
