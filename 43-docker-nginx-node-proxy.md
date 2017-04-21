@@ -432,5 +432,3 @@ CMD ["supervisord", "-n"]
 - 여기까지가 170406 | DockerNginxProxy 3 DockerHub 강의내용
 
 ---
-
-### Setting
