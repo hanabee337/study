@@ -118,7 +118,10 @@ server {
 ---
 
 - `front.localhost`, `ec2-api.hanabee337.com`로 들어온 요청들은 프런트 코드쪽으로 연결하게끔 설정하면 된다.
+- 위의 주소들도 EB와 마찬가지로 cloudflare에서, 추가 등록하였다.
 
+	![](imgs/cloudflare-ec2-regist.png)
+	
 ```python
 server {
     listen 80;
