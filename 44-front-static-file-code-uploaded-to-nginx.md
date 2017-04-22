@@ -2,7 +2,7 @@
 
 - 프런트 엔드에서 코드를 Vue로 주지 않고, static file로 전달해 주었다.
 - 원래 Vue.js로 줄 걸로 예상하고, reverse proxy를 사용하여 node를 연결하는 수업을 받았었다.
-- static file로 전달해 주었으므로, s3 bucket으로 굳이 올리지 않고, 하나의 서버 안에서 location만 별도로 설정해줘도 무방하다고 강사는 가이드 해주었다.
+- static file로 전달해 주었으므로, s3 bucket으로 굳이 올리지 않고, 하나의 Nginx 서버 안에서 프런트에서 전달해준 static file에 대한 location만 별도로 설정해줘도 무방하다고 강사는 가이드 해주었다.
 - 프런트에서 전달해 준 코드를 강사는 바로 브라우저로 띄우는 걸 보여 주었는데, 방법은 다음과 같다.
 - 일단, 그 코드는 다음과 같은 구성으로 되어 있는데,
 	![](imgs/front-code.png)
@@ -70,7 +70,7 @@ server {
 
 	- 수정된 코드대로, 장고로 접속하거나 front 코드로 접속이 분기가 되었다.
 
-- 그리고, `eb.hanabee337.com`와 `eb-api.hanabee337.com`은 대체 어디서 온 주소인가?
+- 그렇담, 대체 `eb.hanabee337.com`와 `eb-api.hanabee337.com`은 어디서 온 주소인가?
 	- `cloudflare.com`에서 CNAME을 다음과 같이 등록하였다.
 	
 	![](imgs/eb-cname.png) 
@@ -133,8 +133,8 @@ server {
 }
 ```
 
-- 그리고, 프런트 엔드 코드는 django 폴더와 같은 위치에 복사하였다.
-
+- 그러면, 프런트 엔드 코드는 어느 위치에 놓아야 할까?
+	- 아래 그림과 같이 django 폴더와 같은 위치에 복사하였다.
 	![](imgs/front-code-path.png)
 
 - 위치 `/srv/app/front/`는 `deploy-ec2`할 때, ubuntu 서버에 코드를 copy하는 destination 위치가 `/srv/app/` 으로 설정되어 있어서 그런 것임.
